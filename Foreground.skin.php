@@ -125,7 +125,7 @@ class foregroundTemplate extends BaseTemplate {
 					<!-- Search form -->
 					<li>
 						<form action="<?php $this->text( 'wgScript' ); ?>" id="searchform" class="mw-search">
-							<?php echo $this->makeSearchInput(array('placeholder' => wfMessage('searchsuggest-search')->text(), 'id' => 'searchInput') ); ?>
+							<?php echo $this->makeSearchInput(array('placeholder' => wfMessage('Linksearch-ok')->text(), 'id' => 'searchInput') ); ?>
 							<button type="submit" class="fa fa-search fa-fw" title="<?php echo wfMessage( 'search' )->text() ?>"></button>
 						</form>
 					</li>

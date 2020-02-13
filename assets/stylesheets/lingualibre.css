@@ -61,6 +61,7 @@ body {
 #navwrapper #top-bar-top-menu {
 	display: flex;
 	justify-content: flex-end;
+	margin-top: 24px;
 }
 #navwrapper #top-bar-bottom-menu {
 	display: flex;
@@ -149,6 +150,33 @@ body {
 .dropdown:hover .dropdown-content {
 	opacity: 1;
 	visibility: visible;
+}
+
+/* Search form */
+#searchform {
+    display: flex;
+    margin-right: 50px; /* TODO: random value, should be removed or put precisely */
+}
+
+#searchform input {
+    width: 138px;
+    height: 25px;
+    border: 1px solid #c4c4c4;
+    border-right: 0;
+    border-radius: 2px 0px 0px 2px;
+    padding: 4px 0px 3px 8px;
+    font-size: 14px;
+}
+#searchform input::placeholder {
+    color: #c4c4c4;
+}
+#searchform button {
+    background: white;
+    border: 1px solid #c4c4c4;
+    border-left: 0;
+    border-radius: 0px 2px 2px 0px;
+    width: 38px;
+    color: rgba(0, 0, 0, 0.5);
 }
 
 
