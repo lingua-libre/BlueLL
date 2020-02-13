@@ -11,6 +11,7 @@ body {
 * {
    margin: 0px;
    padding: 0px;
+   font-family: Lato;
 }
 
 /*****************/
@@ -22,11 +23,13 @@ body {
 	box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.08);
 	background-color: #ffffff;
 	margin-bottom: 20px;
+	z-index: 20;
 }
 #navwrapper li {
 	list-style: none;
 }
 
+/* General layout */
 #navwrapper nav {
 	width: 1200px;
 	height: 114px;
@@ -65,31 +68,96 @@ body {
 	/*height: 40px;*/
 	border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
-#navwrapper #top-bar-bl-menu,
-#navwrapper #top-bar-bl-menu {
+
+#navwrapper #top-bar-bottom-menu > ul {
 	display: flex;
+	flex-direction: row;
 }
-#navwrapper #top-bar-bl-menu li a {
+#navwrapper #top-bar-bottom-menu > *:nth-last-child(2) {
+	margin-left: auto;
+}
+
+/* Main menu items */
+#navwrapper #top-bar-bottom-menu > ul:first-child a {
 	display: block;
 	height: 20px;
 	padding: 10px 12px 10px 12px;
-	font-family: Lato;
 	font-size: 15px;
 	font-weight: 600;
 	color: #222222;
 	text-decoration: none;
 }
-#navwrapper #top-bar-bl-menu li a:hover {
+#navwrapper #top-bar-bottom-menu > ul:first-child a:hover {
 	color: #3366cc;
 }
-#navwrapper #top-bar-bl-menu li:first-child a {
+#navwrapper #top-bar-bottom-menu > ul:first-child li:first-child a {
 	padding-left: 8px;
 }
-#navwrapper #top-bar-bl-menu li:last-child a {
+#navwrapper #top-bar-bottom-menu > ul:first-child li:last-child a {
 	padding-right: 8px;
 }
 
+/* Action menu */
+#navwrapper #actions-button {
+	display: block;
+	height: 20px;
+	padding: 10px;
+	color: #222222;
+	font-weight: bold;
+	font-size: 16px;
+	text-decoration: none;
+	font-family: HelveticaNeue, Lato;
+}
+#navwrapper #actionwrapper {
+	right: 0;
+	box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.08);
+}
+#navwrapper #actions {
+	background: white;
+	width: 200px;
+	border-radius: 0px 0px 5px 5px;
+	border: 1px solid rgba(0, 0, 0, 0.05);
+	border-top: 0;
+	box-shadow: inset 0 14px 6px -10px rgba(0, 0, 0, 0.08);
+	padding-top: 8px;
+}
+#navwrapper #actions li a {
+	display: block;
+	padding: 8px 5px 8px 15px;
+	font-size: 15px;
+	color: black;
+	text-decoration: none;
+}
+#navwrapper .dropdown:hover #actions-button,
+#navwrapper #actions li a:hover {
+	background-color: #eaecf0;
+}
+
+/* dropdowns */
+.dropdown {
+	position: relative;
+}
+.dropdown .dropdown-content {
+	position: absolute;
+	z-index: 10;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 100ms, visibility 200ms;
+}
+
+
+.dropdown:hover .dropdown-content {
+	opacity: 1;
+	visibility: visible;
+}
+
+
 /* TODO: DROPDOWN */
-.dropdown, .f-dropdown {
+#personal-tools-dropdown .dropdown {
 	display:none;
+}
+
+/* TODO: menu icons NOT IN JS */
+.drop-icon {
+	display: inline;
 }

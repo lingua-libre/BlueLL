@@ -122,10 +122,11 @@ class foregroundTemplate extends BaseTemplate {
 
 			<section id="top-bar-sections">
 				<ul id="top-bar-top-menu">
+					<!-- Search form -->
 					<li>
 						<form action="<?php $this->text( 'wgScript' ); ?>" id="searchform" class="mw-search">
 							<?php echo $this->makeSearchInput(array('placeholder' => wfMessage('searchsuggest-search')->text(), 'id' => 'searchInput') ); ?>
-							<button type="submit" title="<?php echo wfMessage( 'search' )->text() ?>"></button>
+							<button type="submit" class="fa fa-search fa-fw" title="<?php echo wfMessage( 'search' )->text() ?>"></button>
 						</form>
 					</li>
 
@@ -137,10 +138,13 @@ class foregroundTemplate extends BaseTemplate {
 							<?php if ($wgForegroundFeatures['showHelpUnderTools']): ?><li id="n-help" <?php echo Linker::tooltip('help') ?>><a href="<?php echo Skin::makeInternalOrExternalUrl( wfMessage( 'helppage' )->inContentLanguage()->text() )?>"><?php echo wfMessage( 'help' )->text() ?></a></li><?php endif; ?>
 						</ul>
 					</li>-->
+
+					<!-- Language selector -->
 					<li>
 						<?php foreach ( $this->getPersonalTools() as $key => $item ) { if ($key == "uls") { echo $this->makeListItem($key, $item); break; } } ?>
 					</li>
 
+					<!-- Personal menu dropdown -->
 					<li id="personal-tools-dropdown" class="has-dropdown active">
 						<a href="#"><i class="fa fa-user"></i></a>
 						<ul class="dropdown">
@@ -149,7 +153,7 @@ class foregroundTemplate extends BaseTemplate {
 					</li>
 
 				</ul>
-				<div id="top-bar-bottom-menu">
+				<!--<div id="top-bar-bottom-menu">
 					<ul id="top-bar-bl-menu">
 						<?php foreach ( $this->getSidebar() as $boxName => $box ) { if ( ($box['header'] != wfMessage( 'toolbox' )->text())  ) { ?>
 							<li class="has-dropdown active"  id='<?php echo Sanitizer::escapeId( $box['id'] ) ?>'<?php echo Linker::tooltip( $box['id'] ) ?>>
@@ -166,13 +170,33 @@ class foregroundTemplate extends BaseTemplate {
 					<ul id="top-bar-br-menu">
 						<li id="action-menu">
 							<a id="actions-button" href="#" data-dropdown="actions" data-options="align:left; is_hover: true; hover_timeout:700" class="button small secondary radius"><i class="fa fa-cog"><span class="show-for-medium-up">&nbsp;<?php echo wfMessage( 'actions' )->text() ?></span></i></a>
-							<!--RTL -->
+
 							<ul id="actions" class="f-dropdown" data-dropdown-content>
 								<?php foreach( $this->data['content_actions'] as $key => $item ) { echo preg_replace(array('/\sprimary="1"/','/\scontext="[a-z]+"/','/\srel="archives"/'),'',$this->makeListItem($key, $item)); } ?>
 								<?php wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this, true ) );  ?>
 							</ul>
 						</li>
 					</ul>
+				</div>-->
+				<div id="top-bar-bottom-menu">
+					<?php foreach ( $this->getSidebar() as $boxName => $box ) { if ( $box['header'] != wfMessage( 'toolbox' )->text() && $box['id'] != 'p-lang'  ) { ?>
+						<ul class="bottom-menu-item horizontal-menu"  id='<?php echo Sanitizer::escapeId( $box['id'] ) ?>'<?php echo Linker::tooltip( $box['id'] ) ?>>
+							<?php if ( is_array( $box['content'] ) ) { ?>
+							<?php foreach ( $box['content'] as $key => $item ) { echo $this->makeListItem( $key, $item ); } ?>
+							<?php } } ?>
+						</ul>
+					<?php } ?>
+
+					<div id="action-menu" class="bottom-menu-item dropdown">
+						<a id="actions-button" href="#" class="button small secondary radius"><i class="fa fa-cog"></i>&nbsp;<?php echo wfMessage( 'actions' )->text() ?></a>
+
+						<div id="actionwrapper" class="dropdown-content">
+							<ul id="actions">
+								<?php foreach( $this->data['content_actions'] as $key => $item ) { echo preg_replace(array('/\sprimary="1"/','/\scontext="[a-z]+"/','/\srel="archives"/'),'',$this->makeListItem($key, $item)); } ?>
+								<?php wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this, true ) );  ?>
+							</ul>
+						</div>
+					</div>
 				</div>
 			</section>
 		</nav>
