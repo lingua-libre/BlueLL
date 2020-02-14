@@ -188,7 +188,7 @@ class foregroundTemplate extends BaseTemplate {
 					<?php } ?>
 
 					<div id="action-menu" class="bottom-menu-item dropdown">
-						<a id="actions-button" href="#" class="button small secondary radius"><i class="fa fa-cog"></i>&nbsp;<?php echo wfMessage( 'actions' )->text() ?></a>
+						<a id="actions-button" href="#" class="button small secondary radius"><?php echo wfMessage( 'actions' )->text() ?></a>
 
 						<div id="actionwrapper" class="dropdown-content">
 							<ul id="actions">
