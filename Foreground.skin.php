@@ -101,6 +101,7 @@ class foregroundTemplate extends BaseTemplate {
 			default:
 				break;
 		}
+
 ?>
 <!-- START FOREGROUNDTEMPLATE -->
 		<nav data-topbar role="navigation" data-options="back_text: <?php echo wfMessage( 'foreground-menunavback' )->text(); ?>">
@@ -144,10 +145,16 @@ class foregroundTemplate extends BaseTemplate {
 						<?php foreach ( $this->getPersonalTools() as $key => $item ) { if ($key == "uls") { echo $this->makeListItem($key, $item); break; } } ?>
 					</li>
 
+					<!-- Record call-to-action -->
+					<li id="p-record">
+						<?php $recordwizardTitle = Title::newFromText( "Special:RecordWizard" ); ?>
+						<?php echo $this->makeLink( "RecordWizard", [ "msg" => "Record", "href" => $recordwizardTitle->getFullURL(), "accesskey" => "r" ] ); ?></a>
+					</li>
+
 					<!-- Personal menu dropdown -->
-					<li id="personal-tools-dropdown" class="has-dropdown active">
-						<a href="#"><i class="fa fa-user"></i></a>
-						<ul class="dropdown">
+					<li id="p-personal" class="dropdown">
+						<a href="#"></a>
+						<ul class="dropdown-content">
 							<?php foreach ( $this->getPersonalTools() as $key => $item ) { if ($key != "uls") { echo $this->makeListItem($key, $item); } } ?>
 						</ul>
 					</li>
@@ -188,14 +195,11 @@ class foregroundTemplate extends BaseTemplate {
 					<?php } ?>
 
 					<div id="action-menu" class="bottom-menu-item dropdown">
-						<a id="actions-button" href="#" class="button small secondary radius"><?php echo wfMessage( 'actions' )->text() ?></a>
-
-						<div id="actionwrapper" class="dropdown-content">
-							<ul id="actions">
-								<?php foreach( $this->data['content_actions'] as $key => $item ) { echo preg_replace(array('/\sprimary="1"/','/\scontext="[a-z]+"/','/\srel="archives"/'),'',$this->makeListItem($key, $item)); } ?>
-								<?php wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this, true ) );  ?>
-							</ul>
-						</div>
+						<a id="actions-button" href="#"><?php echo wfMessage( 'actions' )->text() ?></a>
+						<ul id="actions" class="dropdown-content">
+							<?php foreach( $this->data['content_actions'] as $key => $item ) { echo preg_replace(array('/\sprimary="1"/','/\scontext="[a-z]+"/','/\srel="archives"/'),'',$this->makeListItem($key, $item)); } ?>
+							<?php wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this, true ) );  ?>
+						</ul>
 					</div>
 				</div>
 			</section>
