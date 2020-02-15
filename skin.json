@@ -29,7 +29,11 @@
 			"styles": [
 				"assets/stylesheets/normalize.css",
 				"assets/stylesheets/font-awesome.css",
-				"assets/stylesheets/lingualibre.css"
+				"assets/stylesheets/main.css",
+				"assets/stylesheets/nav.css",
+				"assets/stylesheets/content.css",
+				"assets/stylesheets/footer.css",
+				"assets/stylesheets/print.css"
 			]
 		},
 		"skins.foreground.modernizr": {
@@ -57,9 +61,7 @@
 				"assets/scripts/foundation/foundation.reveal.js",
 				"assets/scripts/foundation/foundation.tab.js",
 				"assets/scripts/foundation/foundation.tooltip.js",
-				"assets/scripts/foreground.js",
-				"assets/scripts/main.js",
-				"assets/scripts/nav.js",
+				"assets/scripts/foreground.js"
 			],
 			"dependencies": [
 				"jquery.cookie",

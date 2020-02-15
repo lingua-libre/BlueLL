@@ -13,3 +13,7 @@ body {
    padding: 0px;
    font-family: Lato;
 }
+
+.clear_both {
+	clear: both;
+}
