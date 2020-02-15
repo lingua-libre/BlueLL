@@ -13,35 +13,7 @@ class Skinforeground extends SkinTemplate {
 
 	public function setupSkinUserCss(OutputPage $out) {
 		parent::setupSkinUserCss($out);
-		global $wgForegroundFeatures;
-		$wgForegroundFeaturesDefaults = array(
-			'showActionsForAnon' => true,
-			'NavWrapperType' => 'divonly',
-			'showHelpUnderTools' => true,
-			'showRecentChangesUnderTools' => true,
-			'enableTabs' => false,
-			'wikiName' => &$GLOBALS['wgSitename'],
-			'navbarIcon' => false,
-			'IeEdgeCode' => 1,
-			'showFooterIcons' => false,
-			'addThisPUBID' => '',
-			'useAddThisShare' => '',
-			'useAddThisFollow' => ''
-		);
-		foreach ($wgForegroundFeaturesDefaults as $fgOption => $fgOptionValue) {
-			if ( !isset($wgForegroundFeatures[$fgOption]) ) {
-				$wgForegroundFeatures[$fgOption] = $fgOptionValue;
-			}
-		}
-		switch ($wgForegroundFeatures['IeEdgeCode']) {
-			case 1:
-				$out->addHeadItem('ie-meta', '<meta http-equiv="X-UA-Compatible" content="IE=edge" />');
-				break;
-			case 2:
-				if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== false))
-					header('X-UA-Compatible: IE=edge');
-				break;
-		}
+		$out->addHeadItem('ie-meta', '<meta http-equiv="X-UA-Compatible" content="IE=edge" />');
 		$out->addModuleStyles('skins.foreground.styles');
 	}
 
@@ -59,153 +31,87 @@ class Skinforeground extends SkinTemplate {
 class foregroundTemplate extends BaseTemplate {
 	public function execute() {
 		global $wgUser;
-		global $wgForegroundFeatures;
 		wfSuppressWarnings();
 		$this->html('headelement');
-		switch ($wgForegroundFeatures['enableTabs']) {
-			case true:
-			    ob_start();
-				$this->html('bodytext');
-				$out = ob_get_contents();
-				ob_end_clean();
-				$markers = array("&lt;a", "&lt;/a", "&gt;");
-				$tags = array("<a", "</a", ">");
-				$body = str_replace($markers, $tags, $out);
-				break;
-			default:
-				$body = '';
-				break;
-		}
-		switch ($wgForegroundFeatures['NavWrapperType']) {
-			case '0':
-				break;
-			case 'divonly':
-				echo "<div id='navwrapper'>";
-				break;
-			default:
-				echo "<div id='navwrapper' class='". $wgForegroundFeatures['NavWrapperType']. "'>";
-				break;
-		}
-		// Set default variables for footer and switch them if 'showFooterIcons' => true
-		$footerLeftClass = 'small-12 large-centered columns text-center';
-		$footerRightClass = 'large-12 small-12 columns';
-		$poweredbyType = "nocopyright";
-		$poweredbyMakeType = 'withoutImage';
-		switch ($wgForegroundFeatures['showFooterIcons']) {
-			case true:
-				$footerLeftClass = 'large-8 small-12 columns';
-				$footerRightClass = 'large-4 small-12 columns';
-				$poweredbyType = "icononly";
-				$poweredbyMakeType = 'withImage';
-				break;
-			default:
-				break;
-		}
+		$body = '';
 
 ?>
 <!-- START FOREGROUNDTEMPLATE -->
-		<nav data-topbar role="navigation" data-options="back_text: <?php echo wfMessage( 'foreground-menunavback' )->text(); ?>">
-			<ul class="title-area">
-				<li class="name">
-					<div class="title-name">
-					<a href="<?php echo $this->data['nav_urls']['mainpage']['href']; ?>">
-					<?php if ($wgForegroundFeatures['navbarIcon'] != '0') { ?>
-						<img alt="<?php echo $this->text('sitename'); ?>" class="top-bar-logo" src="<?php echo $this->text('logopath') ?>">
-					<?php } ?>
-					<div class="title-name"><?php echo $wgForegroundFeatures['wikiName']; ?></div>
-					</a>
-					</div>
-				</li>
-				<li class="toggle-topbar menu-icon">
-					<a href="#"><span><?php echo wfMessage( 'foreground-menutitle' )->text(); ?></span></a>
-				</li>
-			</ul>
-
-			<section id="top-bar-sections">
-				<ul id="top-bar-top-menu">
-					<!-- Search form -->
-					<li>
-						<form action="<?php $this->text( 'wgScript' ); ?>" id="searchform" class="mw-search">
-							<?php echo $this->makeSearchInput(array('placeholder' => wfMessage('Linksearch-ok')->text(), 'id' => 'searchInput') ); ?>
-							<button type="submit" class="fa fa-search fa-fw" title="<?php echo wfMessage( 'search' )->text() ?>"></button>
-						</form>
+		<div id="navwrapper">
+			<nav data-topbar role="navigation" data-options="back_text: <?php echo wfMessage( 'foreground-menunavback' )->text(); ?>">
+				<ul class="title-area">
+					<li class="name">
+						<div class="title-name">
+						<a href="<?php echo $this->data['nav_urls']['mainpage']['href']; ?>">
+							<img alt="<?php echo $this->text('sitename'); ?>" class="top-bar-logo" src="<?php echo $this->text('logopath') ?>">
+							<div class="title-name"><?php echo $GLOBALS['wgSitename']; ?></div>
+						</a>
+						</div>
 					</li>
-
-					<!-- TODO: move it in the footer
-					<li class="has-dropdown active"><a href="#"><i class="fa fa-cogs"></i></a>
-						<ul id="toolbox-dropdown" class="dropdown">
-							<?php foreach ( $this->getToolbox() as $key => $item ) { echo $this->makeListItem($key, $item); } ?>
-							<?php if ($wgForegroundFeatures['showRecentChangesUnderTools']): ?><li id="n-recentchanges"><?php echo Linker::specialLink('Recentchanges') ?></li><?php endif; ?>
-							<?php if ($wgForegroundFeatures['showHelpUnderTools']): ?><li id="n-help" <?php echo Linker::tooltip('help') ?>><a href="<?php echo Skin::makeInternalOrExternalUrl( wfMessage( 'helppage' )->inContentLanguage()->text() )?>"><?php echo wfMessage( 'help' )->text() ?></a></li><?php endif; ?>
-						</ul>
-					</li>-->
-
-					<!-- Language selector -->
-					<li>
-						<?php foreach ( $this->getPersonalTools() as $key => $item ) { if ($key == "uls") { echo $this->makeListItem($key, $item); break; } } ?>
+					<li class="toggle-topbar menu-icon">
+						<a href="#"><span><?php echo wfMessage( 'foreground-menutitle' )->text(); ?></span></a>
 					</li>
-
-					<!-- Record call-to-action -->
-					<li id="p-record">
-						<?php $recordwizardTitle = Title::newFromText( "Special:RecordWizard" ); ?>
-						<?php echo $this->makeLink( "RecordWizard", [ "msg" => "Record", "href" => $recordwizardTitle->getFullURL(), "accesskey" => "r" ] ); ?></a>
-					</li>
-
-					<!-- Personal menu dropdown -->
-					<li id="p-personal" class="dropdown">
-						<a href="#"></a>
-						<ul class="dropdown-content">
-							<?php foreach ( $this->getPersonalTools() as $key => $item ) { if ($key != "uls") { echo $this->makeListItem($key, $item); } } ?>
-						</ul>
-					</li>
-
 				</ul>
-				<!--<div id="top-bar-bottom-menu">
-					<ul id="top-bar-bl-menu">
-						<?php foreach ( $this->getSidebar() as $boxName => $box ) { if ( ($box['header'] != wfMessage( 'toolbox' )->text())  ) { ?>
-							<li class="has-dropdown active"  id='<?php echo Sanitizer::escapeId( $box['id'] ) ?>'<?php echo Linker::tooltip( $box['id'] ) ?>>
-								<a href="#"><?php echo htmlspecialchars( $box['header'] ); ?></a>
-								<?php if ( is_array( $box['content'] ) ) { ?>
-									<ul class="dropdown">
-										<?php foreach ( $box['content'] as $key => $item ) { echo $this->makeListItem( $key, $item ); } ?>
-									</ul>
-								<?php } } ?>
-							</li>
-						<?php } ?>
+
+				<section id="top-bar-sections">
+					<ul id="top-bar-top-menu">
+						<!-- Search form -->
+						<li>
+							<form action="<?php $this->text( 'wgScript' ); ?>" id="searchform" class="mw-search">
+								<?php echo $this->makeSearchInput(array('placeholder' => wfMessage('Linksearch-ok')->text(), 'id' => 'searchInput') ); ?>
+								<button type="submit" class="fa fa-search fa-fw" title="<?php echo wfMessage( 'search' )->text() ?>"></button>
+							</form>
+						</li>
+
+						<!-- TODO: move it in the footer
+						<li class="has-dropdown active"><a href="#"><i class="fa fa-cogs"></i></a>
+							<ul id="toolbox-dropdown" class="dropdown">
+								<?php foreach ( $this->getToolbox() as $key => $item ) { echo $this->makeListItem($key, $item); } ?>
+								<li id="n-recentchanges"><?php echo Linker::specialLink('Recentchanges') ?></li>
+							</ul>
+						</li>-->
+
+						<!-- Language selector -->
+						<li>
+							<?php foreach ( $this->getPersonalTools() as $key => $item ) { if ($key == "uls") { echo $this->makeListItem($key, $item); break; } } ?>
+						</li>
+
+						<!-- Record call-to-action -->
+						<li id="p-record">
+							<?php $recordwizardTitle = Title::newFromText( "Special:RecordWizard" ); ?>
+							<?php echo $this->makeLink( "RecordWizard", [ "msg" => "Record", "href" => $recordwizardTitle->getFullURL(), "accesskey" => "r" ] ); ?></a>
+						</li>
+
+						<!-- Personal menu dropdown -->
+						<li id="p-personal" class="dropdown">
+							<a href="#"></a>
+							<ul class="dropdown-content">
+								<?php foreach ( $this->getPersonalTools() as $key => $item ) { if ($key != "uls") { echo $this->makeListItem($key, $item); } } ?>
+							</ul>
+						</li>
+
 					</ul>
 
-					<ul id="top-bar-br-menu">
-						<li id="action-menu">
-							<a id="actions-button" href="#" data-dropdown="actions" data-options="align:left; is_hover: true; hover_timeout:700" class="button small secondary radius"><i class="fa fa-cog"><span class="show-for-medium-up">&nbsp;<?php echo wfMessage( 'actions' )->text() ?></span></i></a>
+					<div id="top-bar-bottom-menu">
+						<?php foreach ( $this->getSidebar() as $boxName => $box ) { if ( $box['header'] != wfMessage( 'toolbox' )->text() && $box['id'] != 'p-lang'  ) { ?>
+							<ul class="bottom-menu-item horizontal-menu"  id='<?php echo Sanitizer::escapeId( $box['id'] ) ?>'<?php echo Linker::tooltip( $box['id'] ) ?>>
+								<?php if ( is_array( $box['content'] ) ) { ?>
+								<?php foreach ( $box['content'] as $key => $item ) { echo $this->makeListItem( $key, $item ); } ?>
+								<?php } } ?>
+							</ul>
+						<?php } ?>
 
-							<ul id="actions" class="f-dropdown" data-dropdown-content>
+						<div id="action-menu" class="bottom-menu-item dropdown">
+							<a id="actions-button" href="#"><?php echo wfMessage( 'actions' )->text() ?></a>
+							<ul id="actions" class="dropdown-content">
 								<?php foreach( $this->data['content_actions'] as $key => $item ) { echo preg_replace(array('/\sprimary="1"/','/\scontext="[a-z]+"/','/\srel="archives"/'),'',$this->makeListItem($key, $item)); } ?>
 								<?php wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this, true ) );  ?>
 							</ul>
-						</li>
-					</ul>
-				</div>-->
-				<div id="top-bar-bottom-menu">
-					<?php foreach ( $this->getSidebar() as $boxName => $box ) { if ( $box['header'] != wfMessage( 'toolbox' )->text() && $box['id'] != 'p-lang'  ) { ?>
-						<ul class="bottom-menu-item horizontal-menu"  id='<?php echo Sanitizer::escapeId( $box['id'] ) ?>'<?php echo Linker::tooltip( $box['id'] ) ?>>
-							<?php if ( is_array( $box['content'] ) ) { ?>
-							<?php foreach ( $box['content'] as $key => $item ) { echo $this->makeListItem( $key, $item ); } ?>
-							<?php } } ?>
-						</ul>
-					<?php } ?>
-
-					<div id="action-menu" class="bottom-menu-item dropdown">
-						<a id="actions-button" href="#"><?php echo wfMessage( 'actions' )->text() ?></a>
-						<ul id="actions" class="dropdown-content">
-							<?php foreach( $this->data['content_actions'] as $key => $item ) { echo preg_replace(array('/\sprimary="1"/','/\scontext="[a-z]+"/','/\srel="archives"/'),'',$this->makeListItem($key, $item)); } ?>
-							<?php wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this, true ) );  ?>
-						</ul>
+						</div>
 					</div>
-				</div>
-			</section>
-		</nav>
-
-		<?php if ($wgForegroundFeatures['NavWrapperType'] != '0') echo "</div>"; ?>
+				</section>
+			</nav>
+		</div>
 
 		<div id="page-content">
 			<div class="row">
@@ -214,11 +120,11 @@ class foregroundTemplate extends BaseTemplate {
 						<?php echo $this->getIndicators(); ?>
 						<!-- If user is logged in output echo location -->
 						<?php if ($wgUser->isLoggedIn()): ?>
-						<div id="echo-notifications">
-						<div id="echo-notifications-alerts"></div>
-						<div id="echo-notifications-messages"></div>
-						<div id="echo-notifications-notice"></div>
-						</div>
+							<div id="echo-notifications">
+								<div id="echo-notifications-alerts"></div>
+								<div id="echo-notifications-messages"></div>
+								<div id="echo-notifications-notice"></div>
+							</div>
 						<?php endif; ?>
 					<!--[if lt IE 9]>
 					<div id="siteNotice" class="sitenotice panel radius"><?php echo $this->text('sitename') . ' '. wfMessage( 'foreground-browsermsg' )->text(); ?></div>
@@ -263,19 +169,19 @@ class foregroundTemplate extends BaseTemplate {
 		</div>
 
 		<footer id="footer" class="row">
-			<div id="footer-left" class="<?php echo $footerLeftClass;?>">
+			<div id="footer-left">
 				<ul id="footer-left">
 					<?php foreach ( $this->getFooterLinks( "flat" ) as $key ) { ?>
 						<li id="footer-<?php echo $key ?>"><?php $this->html( $key ) ?></li>
 					<?php } ?>
 				</ul>
 			</div>
-			<div id="footer-right-icons" class="<?php echo $footerRightClass;?>">
+			<div id="footer-right-icons">
 				<ul id="poweredby">
-					<?php foreach ( $this->getFooterIcons( $poweredbyType ) as $blockName => $footerIcons ) { ?>
+					<?php foreach ( $this->getFooterIcons( "icononly" ) as $blockName => $footerIcons ) { ?>
 						<li class="<?php echo $blockName ?>">
 							<?php foreach ( $footerIcons as $icon ) { ?>
-								<?php echo $this->getSkin()->makeFooterIcon( $icon, $poweredbyMakeType ); ?>
+								<?php echo $this->getSkin()->makeFooterIcon( $icon, "withImage" ); ?>
 							<?php } ?>
 						</li>
 					<?php } ?>
