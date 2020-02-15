@@ -1,0 +1,15 @@
+/**************************/
+/* General page structure */
+/**************************/
+html {
+	max-width: 100%;
+	overflow-x: hidden;
+}
+body {
+	background-color:#f8f9fa;
+}
+* {
+   margin: 0px;
+   padding: 0px;
+   font-family: Lato;
+}

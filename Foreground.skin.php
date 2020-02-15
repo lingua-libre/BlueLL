@@ -208,32 +208,31 @@ class foregroundTemplate extends BaseTemplate {
 		<?php if ($wgForegroundFeatures['NavWrapperType'] != '0') echo "</div>"; ?>
 
 		<div id="page-content">
-		<div class="row">
-				<div class="large-12 columns" style="padding: 0;">
-					<!-- Output page indicators -->
-					<?php echo $this->getIndicators(); ?>
-					<!-- If user is logged in output echo location -->
-					<?php if ($wgUser->isLoggedIn()): ?>
-					<div id="echo-notifications">
-					<div id="echo-notifications-alerts"></div>
-					<div id="echo-notifications-messages"></div>
-					<div id="echo-notifications-notice"></div>
+			<div class="row">
+					<div class="large-12 columns" style="padding: 0;">
+						<!-- Output page indicators -->
+						<?php echo $this->getIndicators(); ?>
+						<!-- If user is logged in output echo location -->
+						<?php if ($wgUser->isLoggedIn()): ?>
+						<div id="echo-notifications">
+						<div id="echo-notifications-alerts"></div>
+						<div id="echo-notifications-messages"></div>
+						<div id="echo-notifications-notice"></div>
+						</div>
+						<?php endif; ?>
+					<!--[if lt IE 9]>
+					<div id="siteNotice" class="sitenotice panel radius"><?php echo $this->text('sitename') . ' '. wfMessage( 'foreground-browsermsg' )->text(); ?></div>
+					<![endif]-->
+
+					<?php if ( $this->data['sitenotice'] ) { ?><div id="siteNotice" class="sitenotice"><?php $this->html( 'sitenotice' ); ?></div><?php } ?>
+					<?php if ( $this->data['newtalk'] ) { ?><div id="usermessage" class="newtalk panel radius"><?php $this->html( 'newtalk' ); ?></div><?php } ?>
 					</div>
-					<?php endif; ?>
-				<!--[if lt IE 9]>
-				<div id="siteNotice" class="sitenotice panel radius"><?php echo $this->text('sitename') . ' '. wfMessage( 'foreground-browsermsg' )->text(); ?></div>
-				<![endif]-->
+			</div>
 
-				<?php if ( $this->data['sitenotice'] ) { ?><div id="siteNotice" class="sitenotice"><?php $this->html( 'sitenotice' ); ?></div><?php } ?>
-				<?php if ( $this->data['newtalk'] ) { ?><div id="usermessage" class="newtalk panel radius"><?php $this->html( 'newtalk' ); ?></div><?php } ?>
-				</div>
-		</div>
+			<div id="mw-js-message" style="display:none;"></div>
 
-		<div id="mw-js-message" style="display:none;"></div>
-
-		<div class="row">
+			<div class="row">
 				<div id="p-cactions" class="large-12 columns">
-
 					<!--RTL -->
 					<?php
 					$namespace = str_replace('_', ' ', $this->getSkin()->getTitle()->getNsText());
@@ -242,70 +241,50 @@ class foregroundTemplate extends BaseTemplate {
 						$pagetitle = $this->getSkin()->getTitle();
 						$newtitle = str_replace($namespace.':', '', $pagetitle);
 						$displaytitle = str_replace($pagetitle, $newtitle, $displaytitle);
-					?><h4 class="namespace label"><?php print $namespace; ?></h4><?php } ?>
-					<div id="content">
-					<h1  id="firstHeading" class="title"><?php print $displaytitle; ?></h1>
-						<?php if ($wgForegroundFeatures['useAddThisShare'] !== '') { ?>
-						<!-- Go to www.addthis.com/dashboard to customize your tools -->
-						<div class="<?php echo $wgForegroundFeatures['useAddThisShare']; ?> hide-for-print"></div>
-						<!-- Go to www.addthis.com/dashboard to customize your tools -->
-						<?php } ?>
-					<?php if ( $this->data['isarticle'] ) { ?><h3 id="tagline"><?php $this->msg( 'tagline' ) ?></h3><?php } ?>
-					<h5 id="siteSub" class="subtitle"><?php $this->html('subtitle') ?></h5>
-					<div id="contentSub" class="clear_both"></div>
-					<div id="bodyContent" class="mw-bodytext">
-						<?php
-							switch ($wgForegroundFeatures['enableTabs']) {
-								case true:
-									echo $body;
-									break;
-								default:
-								$this->html('bodytext');
-									break;
-							}
-						?>
-						<div class="clear_both"></div>
-					</div>
-		    	<div class="group"><?php $this->html('catlinks'); ?></div>
-		    	<?php $this->html('dataAfterContent'); ?>
-				</div>
-		    </div>
-		</div>
-
-			<footer class="row">
-				<div id="footer">
-					<?php if ($wgForegroundFeatures['useAddThisFollow'] !== '') { ?>
-						<div class="social-follow hide-for-print">
-							<!-- Go to www.addthis.com/dashboard to customize your tools -->
-							<div class="<?php echo $wgForegroundFeatures['useAddThisFollow']; ?> hide-for-print"></div>
-						</div>
+					?>
+						<h4 class="namespace label"><?php print $namespace; ?></h4>
 					<?php } ?>
-					<div id="footer-left" class="<?php echo $footerLeftClass;?>">
-					<ul id="footer-left">
-						<?php foreach ( $this->getFooterLinks( "flat" ) as $key ) { ?>
-							<li id="footer-<?php echo $key ?>"><?php $this->html( $key ) ?></li>
+					<div id="content">
+						<h1  id="firstHeading" class="title"><?php print $displaytitle; ?></h1>
+						<?php if ( $this->data['isarticle'] ) { ?>
+							<h3 id="tagline"><?php $this->msg( 'tagline' ) ?></h3>
 						<?php } ?>
-					</ul>
+						<h5 id="siteSub" class="subtitle"><?php $this->html('subtitle') ?></h5>
+						<div id="contentSub" class="clear_both"></div>
+						<div id="bodyContent" class="mw-bodytext">
+							<?php $this->html('bodytext'); ?>
+							<div class="clear_both"></div>
+						</div>
+			    		<div class="group"><?php $this->html('catlinks'); ?></div>
+			    		<?php $this->html('dataAfterContent'); ?>
 					</div>
-					<div id="footer-right-icons" class="<?php echo $footerRightClass;?>">
-					<ul id="poweredby">
-						<?php foreach ( $this->getFooterIcons( $poweredbyType ) as $blockName => $footerIcons ) { ?>
-							<li class="<?php echo $blockName ?>"><?php foreach ( $footerIcons as $icon ) { ?>
-								<?php echo $this->getSkin()->makeFooterIcon( $icon, $poweredbyMakeType ); ?>
-								<?php } ?>
-							</li>
-						<?php } ?>
-					</ul>
-					</div>
-				</div>
-			</footer>
-
+			    </div>
+			</div>
 		</div>
+
+		<footer id="footer" class="row">
+			<div id="footer-left" class="<?php echo $footerLeftClass;?>">
+				<ul id="footer-left">
+					<?php foreach ( $this->getFooterLinks( "flat" ) as $key ) { ?>
+						<li id="footer-<?php echo $key ?>"><?php $this->html( $key ) ?></li>
+					<?php } ?>
+				</ul>
+			</div>
+			<div id="footer-right-icons" class="<?php echo $footerRightClass;?>">
+				<ul id="poweredby">
+					<?php foreach ( $this->getFooterIcons( $poweredbyType ) as $blockName => $footerIcons ) { ?>
+						<li class="<?php echo $blockName ?>">
+							<?php foreach ( $footerIcons as $icon ) { ?>
+								<?php echo $this->getSkin()->makeFooterIcon( $icon, $poweredbyMakeType ); ?>
+							<?php } ?>
+						</li>
+					<?php } ?>
+				</ul>
+			</div>
+		</footer>
 
 		<?php $this->printTrail(); ?>
-			<?php if ($this->data['isarticle'] && $wgForegroundFeatures['addThisPUBID'] !== '') { ?>
-				<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=<?php echo $wgForegroundFeatures['addThisPUBID']; ?>" async="async">></script>
-			<?php } ?>
+
 		</body>
 		</html>
 
