@@ -17,3 +17,14 @@ body {
 .clear_both {
 	clear: both;
 }
+
+a {
+	color: #3366cc;
+	text-decoration: none;
+}
+a:hover {
+	color: #447ff5;
+}
+a:active {
+	color: #2a4b8d;
+}

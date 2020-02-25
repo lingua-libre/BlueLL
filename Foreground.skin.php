@@ -59,7 +59,7 @@ class foregroundTemplate extends BaseTemplate {
 						<li>
 							<form action="<?php $this->text( 'wgScript' ); ?>" id="searchform" class="mw-search" role="search">
 								<?php echo $this->makeSearchInput(array('placeholder' => wfMessage('Linksearch-ok')->text(), 'id' => 'searchInput') ); ?>
-								<button type="submit" class="fa fa-search fa-fw" title="<?php echo wfMessage( 'search' )->text() ?>"></button>
+								<button type="submit" title="<?php echo wfMessage( 'search' )->text() ?>"></button>
 							</form>
 						</li>
 
@@ -114,9 +114,9 @@ class foregroundTemplate extends BaseTemplate {
 		</header>
 
 		<section id="page-content">
-			<aside>
 				<!-- Output page indicators -->
 				<?php echo $this->getIndicators(); ?>
+			<aside style="display: none;"> <!-- TODO: temporary hidden, how should it be styled ?
 				<!-- If user is logged in output echo location -->
 				<?php if ($wgUser->isLoggedIn()): ?>
 					<div id="echo-notifications">
@@ -133,22 +133,22 @@ class foregroundTemplate extends BaseTemplate {
 			</aside>
 
 			<article id="content" role="main">
-				<hgroup>
-					<?php
-					$namespace = str_replace('_', ' ', $this->getSkin()->getTitle()->getNsText());
-					$displaytitle = $this->data['title'];
-					if (!empty($namespace)) {
-						$pagetitle = $this->getSkin()->getTitle();
-						$newtitle = str_replace($namespace.':', '', $pagetitle);
-						$displaytitle = str_replace($pagetitle, $newtitle, $displaytitle);
-					?>
-						<h4 class="namespace"><?php print $namespace; ?></h4>
-					<?php } ?>
-					<h1 id="firstHeading" class="title"><?php print $displaytitle; ?></h1>
-				</hgroup>
-				<div id="contentSub" class="clear_both">
-					<?php $this->html('subtitle') ?>
-				</div>
+				<header id="contentHeading">
+					<hgroup>
+						<?php
+						$namespace = str_replace('_', ' ', $this->getSkin()->getTitle()->getNsText());
+						$displaytitle = $this->data['title'];
+						if (!empty($namespace)) {
+							$pagetitle = $this->getSkin()->getTitle();
+							$newtitle = str_replace($namespace.':', '', $pagetitle);
+							$displaytitle = str_replace($pagetitle, $newtitle, $displaytitle);
+						?>
+							<h4 class="namespace"><?php print $namespace; ?></h4>
+						<?php } ?>
+						<h1 id="firstHeading" class="title"><?php print $displaytitle; ?></h1>
+						<h2 id="contentSub"><?php $this->html('subtitle') ?></h2>
+					</hgroup>
+				</header>
 				<div id="bodyContent" class="mw-bodytext">
 					<?php $this->html('bodytext'); ?>
 					<div class="clear_both"></div>
