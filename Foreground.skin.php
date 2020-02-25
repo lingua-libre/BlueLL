@@ -114,8 +114,6 @@ class foregroundTemplate extends BaseTemplate {
 		</header>
 
 		<section id="page-content">
-				<!-- Output page indicators -->
-				<?php echo $this->getIndicators(); ?>
 			<aside style="display: none;"> <!-- TODO: temporary hidden, how should it be styled ?
 				<!-- If user is logged in output echo location -->
 				<?php if ($wgUser->isLoggedIn()): ?>
@@ -147,6 +145,7 @@ class foregroundTemplate extends BaseTemplate {
 						<?php } ?>
 						<h1 id="firstHeading" class="title"><?php print $displaytitle; ?></h1>
 						<h2 id="contentSub"><?php $this->html('subtitle') ?></h2>
+						<?php echo $this->getIndicators(); ?>
 					</hgroup>
 				</header>
 				<div id="bodyContent" class="mw-bodytext">

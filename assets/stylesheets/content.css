@@ -1,3 +1,4 @@
+
 #page-content > aside,
 #content > #bodyContent,
 #content > footer {
@@ -62,3 +63,47 @@
 	position: relative;
 }
 
+#contentHeading h4 {
+	display: none;
+}
+
+/* Indicators */
+.mw-indicators, .mw-indicator {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	bottom: 0;
+	right: 0;
+
+	background-position: bottom right;
+	background-repeat: no-repeat;
+	background-size: auto 100%;
+	z-index: 2
+}
+#mw-indicator-mw-helplink {
+	display: none;
+}
+#mw-indicator-stats {
+	background-image: url(images/stats.svg);
+}
+#mw-indicator-talk {
+	background-image: url(images/talk.svg);
+}
+.action-edit .mw-indicators {
+	background-image: url(images/stats.png);
+}
+.action-history .mw-indicators {
+	background-image: url(images/stats.png);
+}
+.action-delete .mw-indicators {
+	background-image: url(images/stats.png);
+}
+.action-history .mw-indicators {
+	background-image: url(images/stats.png);
+}
+.action-history .mw-indicators {
+	background-image: url(images/stats.png);
+}
+.mw-special-Movepage .mw-indicators {
+	background-image: url(images/stats.png);
+}
