@@ -1,0 +1,94 @@
+#footer {
+	max-width: 1200px;
+	margin: auto;
+	margin-top: 62px;
+	margin-bottom: 40px;
+	padding-top: 24px;
+	border-top: 1px solid rgba(0, 0, 0, 0.25);
+
+	display: flex;
+	justify-content: space-between;
+
+	color: #979797;
+	font-size: 14px;
+	line-height: 22px;
+}
+
+#footer li {
+	list-style: none;
+}
+
+/* Left part */
+#footer-left-bottom {
+	display: flex;
+	margin-top: 8px;
+
+	font-size: 15px;
+	font-weight: bold;
+}
+#footer-left-bottom > li {
+	margin-right: 38px;
+}
+#footer-left-bottom > li:last-child {
+	margin-right: 0;
+}
+
+/* Footer icons */
+#footer-right-icons {
+	display: flex;
+}
+#footer-right-icons > li {
+	margin-right: 12px;
+}
+#footer-right-icons > li:last-child {
+	margin-right: 0;
+}
+
+/* Toolbox */
+#toolbox-menu {
+	position: relative;
+	height: 0px;
+}
+#toolbox-button {
+	display: block;
+	height: 20px;
+	padding: 6px 10px 6px 36px;
+
+	background-color: #f8f9fa;
+	background-position: 6px center;
+	background-size: 22px;
+
+	border-radius: 2px;
+	border: solid 1px #a2a9b1;
+
+	font-family: HelveticaNeue;
+	font-size: 16px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #222222;
+	line-height: 20px;
+}
+#toolbox-button:hover {
+	background-color: white;
+	color: #444444;
+}
+#toolbox-button:active {
+	background-color: #c8ccd1;
+	color: #000;
+	border-color: #72777d;
+}
+#toolbox-button::before {
+	background-image: url(icons/toolbox.svg);
+}
+#toolbox-button::after {
+	background-image: url(icons/arrow-up.svg);
+}
+
+#toolbox {
+	/* invert the direction of the dropdown */
+	bottom: 100%;
+	border-radius: 5px 5px 0px 0px;
+	box-shadow: 0 0px 6px 2px rgba(0, 0, 0, 0.08);
+	padding-top: 0px;
+	padding-bottom: 8px;
+}

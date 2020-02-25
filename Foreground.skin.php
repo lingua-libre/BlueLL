@@ -63,14 +63,6 @@ class foregroundTemplate extends BaseTemplate {
 							</form>
 						</li>
 
-						<!-- TODO: move it in the footer
-						<li class="has-dropdown active"><a href="#"><i class="fa fa-cogs"></i></a>
-							<ul id="toolbox-dropdown" class="dropdown">
-								<?php foreach ( $this->getToolbox() as $key => $item ) { echo $this->makeListItem($key, $item); } ?>
-								<li id="n-recentchanges"><?php echo Linker::specialLink('Recentchanges') ?></li>
-							</ul>
-						</li>-->
-
 						<!-- Language selector -->
 						<li>
 							<?php foreach ( $this->getPersonalTools() as $key => $item ) { if ($key == "uls") { echo $this->makeListItem($key, $item); break; } } ?>
@@ -160,22 +152,36 @@ class foregroundTemplate extends BaseTemplate {
 		</section>
 
 		<footer id="footer">
-			<ul id="footer-left">
-				<?php foreach ( $this->getFooterLinks( "flat" ) as $key ) { ?>
-					<li id="footer-<?php echo $key ?>"><?php $this->html( $key ) ?></li>
-				<?php } ?>
-			</ul>
-			<aside id="footer-right-icons">
-				<ul id="poweredby">
-					<?php foreach ( $this->getFooterIcons( "icononly" ) as $blockName => $footerIcons ) { ?>
-						<li class="<?php echo $blockName ?>">
-							<?php foreach ( $footerIcons as $icon ) { ?>
-								<?php echo $this->getSkin()->makeFooterIcon( $icon, "withImage" ); ?>
-							<?php } ?>
-						</li>
+			<div id="footer-left">
+				<?php $footerLinks = $this->getFooterLinks(); ?>
+				<ul id="footer-left-top">
+					<?php foreach ( $footerLinks["info"] as $key ) { ?>
+						<li id="footer-<?php echo $key ?>"><?php $this->html( $key ) ?></li>
 					<?php } ?>
 				</ul>
-			</aside>
+				<ul id="footer-left-bottom">
+					<?php foreach ( $footerLinks["places"] as $key ) { ?>
+						<li id="footer-<?php echo $key ?>"><?php $this->html( $key ) ?></li>
+					<?php } ?>
+				</ul>
+			</div>
+			<ul id="footer-right-icons">
+				<li id="toolbox-menu" class="bottom-menu-item dropdown">
+					<a id="toolbox-button" href="#"><?php echo wfMessage( 'toolbox' )->text() ?></a>
+					<ul id="toolbox" class="dropdown-content">
+						<?php foreach ( $this->getToolbox() as $key => $item ) { echo $this->makeListItem($key, $item); } ?>
+						<li id="n-recentchanges"><?php echo Linker::specialLink('Recentchanges') ?></li>
+					</ul>
+				</li>
+
+				<?php foreach ( $this->getFooterIcons( "icononly" ) as $blockName => $footerIcons ) { ?>
+					<li class="<?php echo $blockName ?>">
+						<?php foreach ( $footerIcons as $icon ) { ?>
+							<?php echo $this->getSkin()->makeFooterIcon( $icon, "withImage" ); ?>
+						<?php } ?>
+					</li>
+				<?php } ?>
+			</ul>
 		</footer>
 
 		<?php $this->printTrail(); ?>
