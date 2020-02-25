@@ -94,26 +94,25 @@
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: 20px;
-	filter: invert(96%) sepia(6%) saturate(36%) hue-rotate(169deg) brightness(87%) contrast(94%); /* rgba(27, 31, 35, 0.2) */
 }
 #navwrapper #top-bar-bottom-menu > ul:nth-child(2) li a:hover {
 	filter: invert(28%) sepia(65%) saturate(1296%) hue-rotate(196deg) brightness(109%) contrast(92%); /* #3366cc */
 	background-size: 21px;
 }
 #n-meta a {
-	background-image: url(icons/cog.svg);
+	background-image: url(icons/meta.svg);
 }
 #n-github a {
-	background-image: url(icons/user.svg);
+	background-image: url(icons/github.svg);
 }
 #n-phabricator a {
-	background-image: url(icons/cog.svg);
+	background-image: url(icons/phabricator.svg);
 }
 #n-wikipedia a {
-	background-image: url(icons/user.svg);
+	background-image: url(icons/wikipedia.svg);
 }
 #n-twitter a {
-	background-image: url(icons/cog.svg);
+	background-image: url(icons/twitter.svg);
 }
 
 /* Action menu */
@@ -144,8 +143,7 @@
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: 20px;
-	filter: invert(59%) sepia(2%) saturate(436%) hue-rotate(182deg) brightness(91%) contrast(82%); /* rgba(34, 34, 34, 0.5) */
-	background-image: url(icons/cog.svg);
+	background-image: url(icons/settings.svg);
 }
 #navwrapper #actions-button::after,
 #pt-uls a.uls-trigger::after {
@@ -159,7 +157,7 @@
 	background-repeat: no-repeat;
 	background-size: 10px;
 	filter: invert(0%) sepia(31%) saturate(6300%) hue-rotate(57deg) brightness(90%) contrast(73%); /* #222222 */
-	background-image: url(icons/angle-down.svg);
+	background-image: url(icons/arrow-down.svg);
 }
 #navwrapper .dropdown-content {
 	right: 0;
@@ -226,6 +224,12 @@
     border-radius: 0px 2px 2px 0px;
     width: 38px;
     color: rgba(0, 0, 0, 0.5);
+}
+#searchform button {
+	background-image: url(icons/search.svg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 20px;
 }
 
 /* Universal Language Translator */
