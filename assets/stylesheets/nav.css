@@ -3,7 +3,7 @@
 /*****************/
 #navwrapper {
 	width: 100%;
-	height: 114px;
+	min-height: 114px;
 	box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.08);
 	background-color: #ffffff;
 	z-index: 20;
@@ -14,9 +14,12 @@
 }
 
 /* General layout */
+#navwrapper .title-area {
+	align-self: center;
+}
 #navwrapper nav {
 	max-width: 1200px;
-	height: 114px;
+	min-height: 114px;
 	margin: auto;
 	display: flex;
 }
@@ -46,10 +49,12 @@
 	display: flex;
 	justify-content: flex-end;
 	margin-top: 24px;
+	margin-bottom: 15px;
 }
 #navwrapper #top-bar-bottom-menu {
 	display: flex;
 	justify-content: space-between;
+	align-items: flex-end;
 	/*height: 40px;*/
 	border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
@@ -57,6 +62,7 @@
 #navwrapper #top-bar-bottom-menu > ul {
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
 }
 #navwrapper #top-bar-bottom-menu > *:nth-last-child(2) {
 	margin-left: auto;
@@ -94,6 +100,14 @@
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: 20px;
+}
+@media screen and (max-width: 1050px) {
+	#navwrapper #top-bar-bottom-menu > ul:nth-child(2) {
+		display: none;
+	}
+	#action-menu {
+		margin-left: auto;
+	}
 }
 #n-meta a {
 	background-image: url(icons/meta.svg);
@@ -159,11 +173,11 @@
 #actions-button::after,
 #pt-uls a.uls-trigger::after,
 #toolbox-button::after {
-	display: inline-block;
+	display: inline;
 	height: 10px;
 	width: 10px;
 	content: '';
-	padding-left: 9px;
+	padding-left: 19px;
 
 	background-position: right center;
 	background-repeat: no-repeat;
@@ -267,6 +281,16 @@
 	color: #222222;
 	line-height: 18px;
 }
+@media screen and (max-width: 800px) {
+	#pt-uls a.uls-trigger {
+		font-size: 0;
+		padding: 6px 0px 6px 16px;
+	}
+	#pt-uls a.uls-trigger::after {
+		background-size: 0px;
+	}
+}
+
 #pt-uls a.uls-trigger:hover {
 	background-color: white;
 	color: #444444;
