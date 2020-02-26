@@ -28,3 +28,9 @@ a:hover {
 a:active {
 	color: #2a4b8d;
 }
+
+/* Preload some hovered images */
+body:after {
+	position: absolute; overflow: hidden; width:0; height:0; z-index: -10;
+	content: url(icons/meta-blue.svg) url(icons/github-blue.svg) url(icons/phabricator-blue.svg) url(icons/wikipedia-blue.svg) url(icons/twitter-blue.svg);
+}

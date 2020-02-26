@@ -95,24 +95,35 @@
 	background-repeat: no-repeat;
 	background-size: 20px;
 }
-#navwrapper #top-bar-bottom-menu > ul:nth-child(2) li a:hover {
-	filter: invert(28%) sepia(65%) saturate(1296%) hue-rotate(196deg) brightness(109%) contrast(92%); /* #3366cc */
-	background-size: 21px;
-}
 #n-meta a {
 	background-image: url(icons/meta.svg);
+}
+#n-meta a:hover {
+	background-image: url(icons/meta-blue.svg);
 }
 #n-github a {
 	background-image: url(icons/github.svg);
 }
+#n-github a:hover {
+	background-image: url(icons/github-blue.svg);
+}
 #n-phabricator a {
 	background-image: url(icons/phabricator.svg);
+}
+#n-phabricator a:hover {
+	background-image: url(icons/phabricator-blue.svg);
 }
 #n-wikipedia a {
 	background-image: url(icons/wikipedia.svg);
 }
+#n-wikipedia a:hover {
+	background-image: url(icons/wikipedia-blue.svg);
+}
 #n-twitter a {
 	background-image: url(icons/twitter.svg);
+}
+#n-twitter a:hover {
+	background-image: url(icons/twitter-blue.svg);
 }
 
 /* Action menu */
@@ -130,7 +141,6 @@
 .dropdown:hover > a,
 .dropdown-content li a:hover {
 	background-color: #eaecf0 !important;
-	filter: unset;
 }
 #actions-button::before,
 #toolbox-button::before {
@@ -158,7 +168,6 @@
 	background-position: right center;
 	background-repeat: no-repeat;
 	background-size: 10px;
-	filter: invert(0%) sepia(31%) saturate(6300%) hue-rotate(57deg) brightness(90%) contrast(73%); /* #222222 */
 	background-image: url(icons/arrow-down.svg);
 }
 .dropdown-content {
@@ -310,7 +319,6 @@
 	background-position: center center;
 	background-size: 20px;
 	padding: 9px 10px 7px 10px;
-	filter: invert(0%) sepia(31%) saturate(6300%) hue-rotate(57deg) brightness(90%) contrast(73%); /* #222222 */
 }
 #p-personal > .dropdown-content {
 	right: 0;
