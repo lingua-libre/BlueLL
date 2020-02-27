@@ -38,8 +38,8 @@ class foregroundTemplate extends BaseTemplate {
 ?>
 <!-- START FOREGROUNDTEMPLATE -->
 		<header id="navwrapper">
-			<nav data-topbar role="navigation" data-options="back_text: <?php echo wfMessage( 'foreground-menunavback' )->text(); ?>">
-				<ul class="title-area">
+			<nav role="navigation" id="menu">
+				<ul class="title-area" role="banner">
 					<li>
 						<div class="title-name">
 							<a href="<?php echo $this->data['nav_urls']['mainpage']['href']; ?>">
@@ -86,20 +86,40 @@ class foregroundTemplate extends BaseTemplate {
 
 					<div id="top-bar-bottom-menu">
 						<?php foreach ( $this->getSidebar() as $boxName => $box ) { if ( $box['header'] != wfMessage( 'toolbox' )->text() && $box['id'] != 'p-lang'  ) { ?>
-							<ul class="bottom-menu-item horizontal-menu"  id='<?php echo Sanitizer::escapeId( $box['id'] ) ?>'<?php echo Linker::tooltip( $box['id'] ) ?>>
+							<ul id="<?php echo Sanitizer::escapeId( $box['id'] ) ?>"<?php echo Linker::tooltip( $box['id'] ) ?>>
 								<?php if ( is_array( $box['content'] ) ) { ?>
 								<?php foreach ( $box['content'] as $key => $item ) { echo $this->makeListItem( $key, $item ); } ?>
 								<?php } } ?>
 							</ul>
 						<?php } ?>
 
-						<div id="action-menu" class="bottom-menu-item dropdown">
+						<div id="action-menu" class="dropdown">
 							<a id="actions-button" href="#"><?php echo wfMessage( 'actions' )->text() ?></a>
 							<ul id="actions" class="dropdown-content">
 								<?php foreach( $this->data['content_actions'] as $key => $item ) { echo preg_replace(array('/\sprimary="1"/','/\scontext="[a-z]+"/','/\srel="archives"/'),'',$this->makeListItem($key, $item)); } ?>
 								<?php wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this, true ) );  ?>
 							</ul>
 						</div>
+						<aside id="mobile">
+							<input type="checkbox" id="mobile-menu-input" role="button" aria-labelledby="hamburger" autocomplete="off">
+							<label id="hamburger" for="mobile-menu-input"><?php echo wfMessage( 'foreground-menutitle' )->text() ?></label>
+							<ul id="mobile-menu">
+								<?php foreach ( $this->getSidebar() as $boxName => $box ) { if ( $box['header'] != wfMessage( 'toolbox' )->text() && $box['id'] != 'p-lang'  ) { ?>
+									<?php if ( is_array( $box['content'] ) ) { ?>
+										<?php foreach ( $box['content'] as $key => $item ) { $item[ 'id' ] = "m" . $item[ 'id' ]; echo $this->makeListItem( $key, $item ); } ?>
+									<?php } } ?>
+								<?php } ?>
+
+								<li id="m-action-menu">
+									<a href="#"><?php echo wfMessage( 'actions' )->text() ?></a>
+									<ul>
+										<?php foreach( $this->data['content_actions'] as $key => $item ) { $item[ 'id' ] = "m" . $item[ 'id' ]; echo preg_replace(array('/\sprimary="1"/','/\scontext="[a-z]+"/','/\srel="archives"/'),'',$this->makeListItem($key, $item)); } ?>
+										<?php wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this, true ) );  ?>
+									</ul>
+								</li>
+							</ul>
+							<label id="mobile-menu-mask" for="mobile-menu-input"></label>
+						</aside>
 					</div>
 				</section>
 			</nav>
@@ -166,7 +186,7 @@ class foregroundTemplate extends BaseTemplate {
 				</ul>
 			</div>
 			<ul id="footer-right-icons">
-				<li id="toolbox-menu" class="bottom-menu-item dropdown">
+				<li id="toolbox-menu" class="dropdown">
 					<a id="toolbox-button" href="#"><?php echo wfMessage( 'toolbox' )->text() ?></a>
 					<ul id="toolbox" class="dropdown-content">
 						<?php foreach ( $this->getToolbox() as $key => $item ) { echo $this->makeListItem($key, $item); } ?>
