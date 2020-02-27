@@ -198,23 +198,32 @@
 }
 
 /* dropdowns */
-.dropdown {
-	position: relative;
+@media screen and (min-width: 850px) {
+	.dropdown {
+		position: relative;
+	}
+	.clickmenu > label {
+		cursor: pointer;
+	}
+	.dropdown .dropdown-content,
+	.clickmenu > ul {
+		position: absolute;
+		z-index: 10;
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity 100ms, visibility 200ms;
+	}
+	.clickmenu > input[type=checkbox] {
+		position: absolute;
+		z-index: -1;
+		opacity: 0;
+	}
+	.dropdown:hover .dropdown-content,
+	.clickmenu > input[type=checkbox]:checked ~ ul {
+		opacity: 1;
+		visibility: visible;
+	}
 }
-.dropdown .dropdown-content {
-	position: absolute;
-	z-index: 10;
-	opacity: 0;
-	visibility: hidden;
-	transition: opacity 100ms, visibility 200ms;
-}
-
-
-.dropdown:hover .dropdown-content {
-	opacity: 1;
-	visibility: visible;
-}
-
 /* Search form */
 #searchform {
     display: flex;
@@ -318,7 +327,7 @@
 }
 
 /* Personal Tools */
-#p-personal > a {
+#personal-button {
 	display: block;
 	width: 18px;
 	height: 18px;
@@ -353,69 +362,70 @@
 	position: relative;
 	margin-left: auto;
 }
-#mobile-menu-input {
-	position: absolute;
-	z-index: -1;
-	opacity: 0;
-}
-#mobile-menu {
-	position: fixed;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	width: 320px;
-	max-width: 80%;
-	z-index: 15;
-	overflow-y: auto;
-	background-color: #eaecf0;
-	visibility: hidden;
-	transform: translate(100%,0);
-	transition: opacity 250ms ease-in-out,visibility 250ms ease-in-out,transform 250ms ease-in-out;
-}
-#mobile-menu-input:checked ~ #mobile-menu {
-	visibility: visible;
-	box-shadow: 1px 0 8px 0 rgba(0,0,0,0.35);
-	transform: translate(0,0);
-}
+@media screen and (max-width: 849px) {
+	#mobile-menu-input, .clickmenu > input {
+		position: absolute;
+		z-index: -1;
+		opacity: 0;
+	}
+	#mobile-menu, .clickmenu > ul {
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		width: 320px;
+		max-width: 80%;
+		z-index: 15;
+		overflow-y: auto;
+		background-color: #eaecf0;
+		visibility: hidden;
+		transform: translate(100%,0);
+		transition: opacity 250ms ease-in-out,visibility 250ms ease-in-out,transform 250ms ease-in-out;
+	}
+	#mobile-menu-input:checked ~ #mobile-menu, .clickmenu > input:checked ~ ul {
+		visibility: visible;
+		box-shadow: 1px 0 8px 0 rgba(0,0,0,0.35);
+		transform: translate(0,0);
+	}
 
-#hamburger {
-	display: block;
-	height: 20px;
-	color: transparent;
-	width: 40px;
-	height: 40px;
-	font-weight: bold;
-	font-size: 16px;
-	text-decoration: none;
-	font-family: HelveticaNeue, Lato;
-	background-color: rgba(234, 236, 240, 0.3);
-	cursor: pointer;
+	#hamburger, .clickmenu-label {
+		display: block;
+		height: 20px;
+		color: transparent;
+		width: 40px;
+		height: 40px;
+		font-weight: bold;
+		font-size: 16px;
+		text-decoration: none;
+		font-family: HelveticaNeue, Lato;
+		background-color: rgba(234, 236, 240, 0.3);
+		cursor: pointer;
 
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-size: 20px;
-	background-image: url(icons/hamburger.svg);
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: 20px;
+		background-image: url(icons/hamburger.svg);
+	}
+	#hamburger:hover {
+		background-color: #eaecf0 !important;
+	}
+	#mobile-menu-mask, .clickmenu > .clickmenu-mask {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		opacity: 0;
+		bottom: 0;
+		background: rgba(0,0,0,0.8);
+		z-index: 14;
+		visibility: hidden;
+		transition: opacity 100ms ease-in-out;
+	}
+	#mobile-menu-input:checked ~ #mobile-menu-mask, .clickmenu > input:checked ~ .clickmenu-mask {
+		visibility: visible;
+		opacity: 0.5;
+	}
 }
-#hamburger:hover {
-	background-color: #eaecf0 !important;
-}
-#mobile-menu-mask {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	opacity: 0;
-	bottom: 0;
-	background: rgba(0,0,0,0.8);
-	z-index: 14;
-	visibility: hidden;
-	transition: opacity 100ms ease-in-out;
-}
-#mobile-menu-input:checked ~ #mobile-menu-mask {
-	visibility: visible;
-	opacity: 0.5;
-}
-
 
 /*******************/
 /* RESPONSIVE MENU */
