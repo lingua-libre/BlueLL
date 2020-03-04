@@ -9,3 +9,5 @@ Thumbs.db
 ._*
 .ftpconfig
 .ftpignore
+assets/stylesheets/RecordWizard/*
+assets/stylesheets/images/*

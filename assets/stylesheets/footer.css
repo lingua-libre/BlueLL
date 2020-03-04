@@ -71,7 +71,6 @@
 	height: 40px;
 }
 #toolbox-button {
-	display: block;
 	height: 20px;
 	padding: 6px 10px 6px 36px;
 
@@ -97,26 +96,4 @@
 	background-color: #c8ccd1;
 	color: #000;
 	border-color: #72777d;
-}
-#toolbox-button::before {
-	background-image: url(icons/toolbox.svg);
-}
-#toolbox-button::after {
-	background-image: url(icons/arrow-up.svg);
-}
-
-#toolbox {
-	/* invert the direction of the dropdown */
-	bottom: 100%;
-	border-radius: 5px 5px 0px 0px;
-	box-shadow: 0 0px 6px 2px rgba(0, 0, 0, 0.08);
-	padding-top: 0px;
-	padding-bottom: 8px;
-	text-align: left;
-}
-
-@media screen and (max-width: 640px) {
-	#toolbox {
-		left: 0;
-	}
 }
