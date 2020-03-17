@@ -110,6 +110,7 @@ class foregroundTemplate extends BaseTemplate {
 								<?php foreach ( $this->getSidebar() as $boxName => $box ) { if ( $box['header'] != wfMessage( 'toolbox' )->text() && $box['id'] != 'p-lang'  ) { ?>
 									<?php if ( is_array( $box['content'] ) ) { ?>
 										<?php foreach ( $box['content'] as $key => $item ) { $item[ 'id' ] = "m" . $item[ 'id' ]; echo $this->makeListItem( $key, $item ); } ?>
+										<?php break; /* Display only the main menu in the hamburger menu */ ?>
 									<?php } } ?>
 								<?php } ?>
 
