@@ -107,3 +107,20 @@
 .mw-special-Movepage .mw-indicators {
 	background-image: url(images/stats.png);
 }
+
+
+/* Content text */
+#mw-content-text h2 {
+	margin-top: 20px;
+}
+#mw-content-text h2 .mw-headline {
+	font-family: Charter;
+  font-size: 30px;
+  font-weight: bold;
+  color: #000000;
+}
+#mw-content-text h2 + p,
+#mw-content-text h2 + ul,
+#mw-content-text h2 + ol {
+	margin-top: 10px;
+}

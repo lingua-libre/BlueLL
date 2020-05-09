@@ -35,3 +35,60 @@ body:after {
 	position: absolute; overflow: hidden; width:0; height:0; z-index: -10;
 	content: url(icons/meta-blue.svg) url(icons/github-blue.svg) url(icons/phabricator-blue.svg) url(icons/wikipedia-blue.svg) url(icons/twitter-blue.svg);
 }
+
+/* Custom fonts */
+/* Charter */
+@font-face {
+    font-family: 'Charter';
+    src: url('../fonts/CharterBold.ttf');
+}
+
+/* Lato */
+@font-face {
+    font-family: 'Lato';
+    src: url('../fonts/Lato-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url('../fonts/Lato-Bold.ttf');
+	font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url('../fonts/Lato-Italic.ttf');
+	font-style: italic;
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url('../fonts/Lato-BoldItalic.ttf');
+	font-weight: bold;
+	font-style: italic;
+}
+
+/* HelveticaNeue */
+@font-face {
+    font-family: 'HelveticaNeue';
+    src: url('../fonts/HelveticaNeueCyr-Roman.ttf');
+}
+
+@font-face {
+    font-family: 'HelveticaNeue';
+    src: url('../fonts/HelveticaNeueCyr-Bold.ttf');
+	font-weight: bold;
+}
+
+@font-face {
+    font-family: 'HelveticaNeue';
+    src: url('../fonts/HelveticaNeueCyr-Italic.ttf');
+	font-style: italic;
+}
+
+@font-face {
+    font-family: 'HelveticaNeue';
+    src: url('../fonts/HelveticaNeueCyr-BoldItalic.ttf');
+	font-weight: bold;
+	font-style: italic;
+}
