@@ -1,20 +1,20 @@
 <?php
 
 /**
- * Skin file for Foreground
+ * Skin file for BlueLL
  *
  * @file
  * @ingroup Skins
  */
 
 
-class Skinforeground extends SkinTemplate {
-	public $skinname = 'foreground', $stylename = 'foreground', $template = 'foregroundTemplate', $useHeadElement = true;
+class SkinBlueLL extends SkinTemplate {
+	public $skinname = 'bluell', $stylename = 'bluell', $template = 'BlueLLTemplate', $useHeadElement = true;
 
 	public function setupSkinUserCss(OutputPage $out) {
 		parent::setupSkinUserCss($out);
 		$out->addHeadItem('ie-meta', '<meta http-equiv="X-UA-Compatible" content="IE=edge" />');
-		$out->addModuleStyles('skins.foreground.styles');
+		$out->addModuleStyles('skins.bluell.styles');
 	}
 
 	public function initPage( OutputPage $out ) {
@@ -23,12 +23,12 @@ class Skinforeground extends SkinTemplate {
 
 		$viewport_meta = 'width=device-width, user-scalable=yes, initial-scale=1.0';
 		$out->addMeta('viewport', $viewport_meta);
-		$out->addModules('skins.foreground.js');
+		$out->addModules('skins.bluell.js');
 	}
 
 }
 
-class foregroundTemplate extends BaseTemplate {
+class BlueLLTemplate extends BaseTemplate {
 	public function execute() {
 		global $wgUser;
 		wfSuppressWarnings();
@@ -36,7 +36,7 @@ class foregroundTemplate extends BaseTemplate {
 		$body = '';
 
 ?>
-<!-- START FOREGROUNDTEMPLATE -->
+<!-- START BLUELL TEMPLATE -->
 		<header id="navwrapper">
 			<nav role="navigation" id="menu">
 				<ul class="title-area" role="banner">
@@ -49,7 +49,7 @@ class foregroundTemplate extends BaseTemplate {
 						</div>
 					</li>
 					<li class="toggle-topbar menu-icon">
-						<a href="#"><span><?php echo wfMessage( 'foreground-menutitle' )->text(); ?></span></a>
+						<a href="#"><span><?php echo wfMessage( 'bluell-menutitle' )->text(); ?></span></a>
 					</li>
 				</ul>
 
@@ -105,7 +105,7 @@ class foregroundTemplate extends BaseTemplate {
 						</div>
 						<aside id="hamburger-menu" class="mobile-menu">
 							<input id="hamburger-input" type="checkbox" role="button" aria-labelledby="hamburger-label" autocomplete="off" class="mobile-menu-input">
-							<label id="hamburger-button" for="hamburger-input"  class="mobile-menu-label"><?php echo wfMessage( 'foreground-menutitle' )->text() ?></label>
+							<label id="hamburger-button" for="hamburger-input"  class="mobile-menu-label"><?php echo wfMessage( 'bluell-menutitle' )->text() ?></label>
 							<ul id="hamburger" class="mobile-menu-content">
 								<?php foreach ( $this->getSidebar() as $boxName => $box ) { if ( $box['header'] != wfMessage( 'toolbox' )->text() && $box['id'] != 'p-lang'  ) { ?>
 									<?php if ( is_array( $box['content'] ) ) { ?>

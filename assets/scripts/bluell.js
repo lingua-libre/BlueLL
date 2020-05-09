@@ -1,18 +1,12 @@
-
 jQuery(document).ready(function() {
 
-  // Log errors
-  jQuery(document).foundation(function (response) {
-    if (window.console) console.log(response.errors);
-  });
-  
-  // The Echo extension puts an item in personal tools that Foreground really should have in the top menu
+  // The Echo extension puts an item in personal tools that BlueLL really should have in the top menu
   // to make this easier, we move it here and loaded earlier to speed up transform
   jQuery("#pt-notifications").prependTo("#echo-notifications-alerts");
   jQuery("#pt-notifications-message").prependTo("#echo-notifications-messages");
   jQuery("#pt-notifications-alert").prependTo("#echo-notifications-alerts");
   jQuery("#pt-notifications-notice").prependTo("#echo-notifications-notice");
-  
+
   // Append font-awesome icons
   jQuery('[id^=ca-nstab] a').prepend('<div class="drop-icon"><i class="fa fa-file fa-fw"></i></div>')
   jQuery('li#ca-talk a').prepend('<div class="drop-icon"><i class="fa fa-comments-o fa-fw"></i></div>')
@@ -46,7 +40,7 @@ if ( jQuery( '#ca-addsection' ).length ) {
   jQuery('li#pt-createaccount a').prepend('<div class="drop-icon"><i class="fa fa-lock fa-fw"></i></div>')
   jQuery('li#pt-anonuserpage a').prepend('<div class="drop-icon"><i class="fa fa-user-secret fa-fw"></i></div>')
   jQuery('li#pt-anontalk a').prepend('<div class="drop-icon"><i class="fa fa-commenting-o fa-fw"></i></div>')
-  
+
   jQuery('li#t-smwbrowselink a').prepend('<div class="drop-icon"><i class="fa fa-eye fa-fw"></i></div>')
   jQuery('li#t-whatlinkshere a').prepend('<div class="drop-icon"><i class="fa fa-arrows fa-fw"></i></div>')
   jQuery('li#t-blockip a').prepend('<div class="drop-icon"><i class="fa fa-ban fa-fw"></i></div>')
@@ -61,7 +55,7 @@ if ( jQuery( '#ca-addsection' ).length ) {
   jQuery('li#t-permalink a').prepend('<div class="drop-icon"><i class="fa fa-dot-circle-o fa-fw"></i></div>')
   jQuery('li#t-info a').prepend('<div class="drop-icon"><i class="fa fa-info fa-fw"></i></div>')
   jQuery('li#feedlinks a').prepend('<div class="drop-icon"><i class="fa fa-rss fa-fw"></i></div>')
-  
+
   jQuery('ul#toolbox-dropdown.dropdown>li#n-recentchanges a').prepend('<div class="drop-icon"><i class="fa fa-tasks fa-fw"></i></div>')
   jQuery('ul#toolbox-dropdown.dropdown>li#n-help a').prepend('<div class="drop-icon"><i class="fa fa-question fa-fw"></i></div>')
 

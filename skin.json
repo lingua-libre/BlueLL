@@ -1,30 +1,27 @@
 {
-	"name": "Foreground",
-	"version": "2.1.0",
+	"name": "BlueLL",
+	"version": "1.0.0",
 	"author": [
-		"Garrick Van Buren",
-		"Jamie Thingelstad",
-		"Tom Hutchison",
-		"..."
+		"Antoine Lamielle"
 	],
-	"url": "https://github.com/thingles/foreground",
-	"descriptionmsg": "foreground-desc",
+	"url": "https://github.com/lingua-libre/BlueLL",
+	"descriptionmsg": "bluell-desc",
 	"license-name": "BSD-2-Clause",
 	"type": "skin",
 	"ValidSkinNames": {
-		"foreground": "Foreground"
+		"bluell": "BlueLL"
 	},
 	"MessagesDirs": {
-		"SkinForeground": [
+		"SkinBlueLL": [
 			"i18n"
 		]
 	},
 	"AutoloadClasses": {
-		"SkinForeground": "Foreground.skin.php",
-		"foregroundTemplate": "Foreground.skin.php"
+		"SkinBlueLL": "BlueLL.skin.php",
+		"BlueLLTemplate": "BlueLL.skin.php"
 	},
 	"ResourceModules": {
-		"skins.foreground.styles": {
+		"skins.bluell.styles": {
 			"position": "top",
 			"styles": [
 				"assets/stylesheets/normalize.css",
@@ -36,42 +33,16 @@
 				"assets/stylesheets/print.css"
 			]
 		},
-		"skins.foreground.modernizr": {
-			"position": "top",
-			"scripts": [
-				"assets/scripts/vendor/modernizr.js"
-			]
-		},
-		"skins.foreground.js": {
+		"skins.bluell.js": {
 			"position": "bottom",
 			"scripts": [
-				"assets/scripts/vendor/fastclick.js",
-				"assets/scripts/vendor/placeholder.js",
-				"assets/scripts/foundation/foundation.js",
-				"assets/scripts/foundation/foundation.topbar.js",
-				"assets/scripts/foundation/foundation.dropdown.js",
-				"assets/scripts/foundation/foundation.joyride.js",
-				"assets/scripts/foundation/foundation.accordion.js",
-				"assets/scripts/foundation/foundation.offcanvas.js",
-				"assets/scripts/foundation/foundation.alert.js",
-				"assets/scripts/foundation/foundation.clearing.js",
-				"assets/scripts/foundation/foundation.equalizer.js",
-				"assets/scripts/foundation/foundation.interchange.js",
-				"assets/scripts/foundation/foundation.orbit.js",
-				"assets/scripts/foundation/foundation.reveal.js",
-				"assets/scripts/foundation/foundation.tab.js",
-				"assets/scripts/foundation/foundation.tooltip.js",
-				"assets/scripts/foreground.js"
-			],
-			"dependencies": [
-				"jquery.cookie",
-				"skins.foreground.modernizr"
+				"assets/scripts/bluell.js"
 			]
 		}
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "",
-		"remoteSkinPath": "foreground"
+		"remoteSkinPath": "BlueLL"
 	},
 	"config": {},
 	"manifest_version": 1

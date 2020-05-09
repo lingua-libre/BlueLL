@@ -1,14 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Marc Antoine Thevenet",
-			"Verdy p",
-			"Wladek92",
-			"Hutchy68"
+			"Antoine Lamielle"
 		]
 	},
-	"skinname-foreground": "Foreground",
-	"foreground-desc": "Propose un habillage visant à mettre votre contenu au premier plan",
-	"foreground-browsermsg": "Il est possible que l’affichage ne soit pas correct avec cette version d’Internet Explorer. Nous vous recommandons de le mettre à jour avec une version plus récente ou de passer à un navigateur comme Firefox ou Chrome.",
-	"foreground-menutitle": "Menu"
+	"skinname-bluell": "BlueLL",
+	"bluell-desc": "Habillage épuré initialement dévelopé pour Lingua Libre.",
+	"bluell-menutitle": "Menu"
 }

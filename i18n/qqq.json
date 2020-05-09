@@ -1,11 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kghbln"
+			"Antoine Lamielle"
 		]
 	},
-	"skinname-foreground": "{{Notranslate}}\n\nThis this is the name of the skin.",
-	"foreground-desc": "{{desc|what=skin|name=Foreground|url=https://www.mediawiki.org/wiki/Skin:Foreground}}",
-	"foreground-browsermsg": "This is an error message.",
-	"foreground-menutitle": "This is a label."
+	"skinname-bluell": "{{Notranslate}}\n\nThis this is the name of the skin.",
+	"bluell-desc": "{{desc|what=skin|name=BlueLL|url=https://www.mediawiki.org/wiki/Skin:BlueLL}}",
+	"bluell-menutitle": "This is a label."
 }
