@@ -95,11 +95,21 @@ class BlueLLTemplate extends BaseTemplate {
 							</ul>
 						<?php } ?>
 
+						<!-- Edit button -->
+						<?php if ( isset( $this->data['content_actions']['edit'] ) ) { ?>
+							<?php echo preg_replace(array('/\sprimary="1"/','/\scontext="[a-z]+"/','/\srel="archives"/'),'',$this->makeListItem('edit', $this->data['content_actions']['edit'], ['tag' => 'span'])); ?>
+						<?php } ?>
+						<?php if ( isset( $this->data['content_actions']['viewsource'] ) ) { ?>
+							<?php $this->data['content_actions']['viewsource']['text'] = wfMessage( 'edit' ); ?>
+							<?php echo preg_replace(array('/\sprimary="1"/','/\scontext="[a-z]+"/','/\srel="archives"/'),'',$this->makeListItem('edit', $this->data['content_actions']['viewsource'], ['tag' => 'span'])); ?>
+						<?php } ?>
+
+						<!-- Action menu -->
 						<div id="actions-menu" class="dropdown">
 							<input id="actions-input" type="checkbox" role="button" aria-labelledby="actions-button" autocomplete="off" class="dropdown-input">
 							<label id="actions-button" for="actions-input" class="dropdown-label"><?php echo wfMessage( 'actions' )->text() ?></label>
 							<ul id="actions" class="dropdown-content">
-								<?php foreach( $this->data['content_actions'] as $key => $item ) { echo preg_replace(array('/\sprimary="1"/','/\scontext="[a-z]+"/','/\srel="archives"/'),'',$this->makeListItem($key, $item)); } ?>
+								<?php foreach( $this->data['content_actions'] as $key => $item ) { if ( $key === 'edit' || $key === 'viewsource' ) { continue; } echo preg_replace(array('/\sprimary="1"/','/\scontext="[a-z]+"/','/\srel="archives"/'),'',$this->makeListItem($key, $item)); } ?>
 								<?php wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this, true ) );  ?>
 							</ul>
 						</div>

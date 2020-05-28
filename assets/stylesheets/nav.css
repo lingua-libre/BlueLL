@@ -132,6 +132,20 @@
 	background-image: url(icons/twitter-blue.svg);
 }
 
+/* Edit menu */
+#ca-viewsource a, #ca-edit a {
+	position: relative;
+	display: block;
+	height: 20px;
+	padding: 10px 10px 10px 38px;
+
+	color: #222222;
+	font-weight: bold;
+	font-size: 16px;
+	text-decoration: none;
+	font-family: HelveticaNeue, Lato;
+}
+
 /* Action menu */
 #actions-button {
 	height: 20px;
@@ -146,7 +160,9 @@
 }
 /* icons on some button */
 #actions-button::before,
-#toolbox-button::before {
+#toolbox-button::before,
+#ca-viewsource a::before,
+#ca-edit a::before {
 	display: inline-block;
 	position: absolute;
 	left: 10px;
@@ -163,6 +179,10 @@
 }
 #toolbox-button::before {
 	background-image: url(icons/toolbox.svg);
+}
+#ca-viewsource a::before,
+#ca-edit a::before {
+	background-image: url(icons/edit.svg);
 }
 
 /* arrows indicator on some buttons */
@@ -480,7 +500,7 @@
 	#top-bar-bottom-menu > ul:first-child {
 		display: none;
 	}
-	#actions-menu {
+	#actions-menu, #ca-viewsource, #ca-edit {
 		display: none;
 	}
 	#hamburger-menu {
