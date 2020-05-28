@@ -1,0 +1,331 @@
+
+/**********************/
+/* Sections managment */
+/**********************/
+.section {
+	position: relative;
+}
+.section.section-white::after,
+.section.section-grey::after,
+.section.section-blue::after,
+.section.section-wmbg-right::after,
+.section.section-wmbg::after {
+	display: block;
+	content: '';
+
+	position: absolute;
+	left: -50vw;
+	top: 0;
+	z-index: -1;
+
+	width: 150vw;
+	height: 100%;
+}
+.section.section-white::after {
+	background-color: #ffffff;
+}
+.section.section-grey::after{
+	background-color: #d8dee4;
+}
+.section.section-blue::after {
+	background-color: #206ae2;
+}
+.section.section-wmbg-right::after {
+	left: 60%;
+	width: 50vw;
+	background-image: url('images/pattern_light.png');
+}
+.section.section-wmbg::after {
+	background-image: url('images/pattern_light.png');
+}
+.section.section-letters {
+	background-image: url('images/letters.svg'), url('images/wiki.svg');
+	background-size: 320px 250px;
+	background-position: top -20px right 0px, bottom 0px left 66%;
+	background-repeat: no-repeat, no-repeat;
+}
+.section.section-blue p {
+	color: rgba(255, 255, 255, 0.6);
+}
+.section.section-blue b {
+	color: white;
+}
+
+.section.gap-s {
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+.section.gap-m {
+	padding-top: 60px;
+	padding-bottom: 60px;
+}
+.section.gap-l {
+	padding-top: 85px;
+	padding-bottom: 85px;
+}
+.section.gap-xl {
+	padding-top: 110px;
+	padding-bottom: 110px;
+}
+
+
+
+/********************/
+/* Column managment */
+/********************/
+.columns {
+	display: flex;
+}
+.columns > * {
+	flex: 1
+}
+
+.columns.gap-s > * {
+	margin-left: 7px;
+	margin-right: 7px;
+}
+.columns.gap-m > * {
+	margin-left: 17px;
+	margin-right: 17px;
+}
+.columns.gap-l > * {
+	margin-left: 25px;
+	margin-right: 25px;
+}
+.columns.gap-s > *:first-child,
+.columns.gap-m > *:first-child,
+.columns.gap-l > *:first-child {
+	margin-left: 0px;
+}
+.columns.gap-s > *:last-child,
+.columns.gap-m > *:last-child,
+.columns.gap-l > *:last-child {
+	margin-right: 0px;
+}
+
+.columns.v-center > * {
+	align-self: center;
+}
+
+.columns.padded-s > * {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.columns.padded-m > * {
+	padding-left: 25px;
+	padding-right: 25px;
+}
+.columns.padded-l > * {
+	padding-left: 40px;
+	padding-right: 40px;
+}
+
+
+/****************/
+/* Shadow boxes */
+/****************/
+.mw-parser-output .shadow {
+	box-shadow: -10px 10px 50px 0 rgba(0, 0, 0, 0.35);
+}
+
+/***********************************************/
+/* Hide content Heading on some specific pages */
+/***********************************************/
+.page-LinguaLibre_Main_Page #contentHeading,
+.page-LinguaLibre_About #contentHeading,
+.page-Help_Main #contentHeading {
+	display: none;
+}
+
+
+/*************/
+/* Home page */
+/*************/
+.page-LinguaLibre_Main_Page #mw-content-text h2 {
+	margin-bottom: 20px;
+}
+.page-LinguaLibre_Main_Page #mw-content-text .citation {
+	font-family: Charter;
+	font-size: 35px;
+	font-weight: bold;
+	letter-spacing: 0px;
+	color: #222222;
+}
+.mainpage-last-records {
+	margin-top: 10px;
+}
+.mainpage-center {
+	display: flex;
+	justify-content: center;
+}
+.mainpage-crop-1 {
+	max-width: 340px;
+	overflow: hidden;
+	text-indent: -20%;
+	margin-left: 30px;
+}
+.mainpage-crop-2 {
+	max-width: 400px;
+	overflow: hidden;
+	text-indent: -40%;
+}
+.mainpage-crop-1 p {
+	line-height: 0;
+}
+#languages-overview ul {
+	margin-top: 0 !important;
+	list-style: none;
+}
+.mainpage-shifted {
+	position: relative;
+	min-height: 450px;
+}
+.mainpage-shifted-1 {
+	position: absolute;
+	top: 250px;
+}
+.mainpage-shifted-2 {
+	position: absolute;
+	right: 0;
+}
+.mainpage-record-button {
+	box-sizing: border-box;
+	width: 192px;
+	height: 192px;
+
+	border: 34px solid #eaf3ff;
+	border-radius: 100%;
+
+	background-color: #3366cc;
+	background-image: url( 'icons/mic.svg' );
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+
+/*************/
+/* Audio Box */
+/*************/
+.audiobox {
+	display: flex;
+
+	width: 360px;
+	height: 80px;
+
+	margin-top: 12px;
+	margin-bottom: 20px;
+
+	border-radius: 12px;
+	background-color: #ffffff;
+	box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.17063);
+}
+
+.audiobox .ab-playbutton {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	box-sizing: border-box;
+	width: 56px;
+	height: 56px;
+	margin-left: 15px;
+	margin-right: 15px;
+
+	align-self: center;
+
+	border: 8px solid #eaf3ff;
+	border-radius: 100%;
+
+	background-color: #3366cc;
+
+	cursor: pointer;
+}
+.audiobox .ab-playbutton i {
+	display: inline-block;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 7.5px 0 7.5px 13.0px;
+	border-color: transparent transparent transparent #ffffff;
+}
+
+.audiobox .ab-title {
+	padding-top: 20px;
+	font-size: 18px;
+	line-height: 20px;
+	font-weight: bold;
+	color: #000000;
+}
+.audiobox .ab-metadata {
+	font-size: 13px;
+	color: rgba(0, 0, 0, 0.5);
+	padding-bottom: 15px;
+}
+
+
+/*************/
+/* Help page */
+/*************/
+
+#mw-content-text .section.section-wmbg h2 .mw-headline {
+	color: white;
+}
+
+#help-searchform {
+	display: inline-block;
+
+	margin-top: 25px;
+	font-size: 0;
+
+	box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+#help-searchform input[type=text] {
+	max-width: 450px;
+	height: 48px;
+
+	font-size: 16px;
+
+	background-color: #ffffff;
+
+	border: 0;
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+#help-searchform input[type=submit] {
+	box-sizing: border-box;
+	width: 48px;
+	height: 48px;
+
+	font-size: 12px;
+	color: transparent;
+
+	background-image: url(/skins/BlueLL/assets/stylesheets/icons/search.svg?fd7c1);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 20px;
+	background-color: white;
+
+	border: 0;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
+
+.helpbox {
+	padding: 34px;
+
+	box-shadow: 0 0 11px 0 rgba(0, 0, 0, 0.25);
+	background-color: #ffffff;
+}
+.helpbox img {
+	display: block;
+	margin: auto;
+}
+
+
+/**************/
+/* About page */
+/**************/

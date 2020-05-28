@@ -30,6 +30,7 @@
 				"assets/stylesheets/nav.css",
 				"assets/stylesheets/content.css",
 				"assets/stylesheets/footer.css",
+				"assets/stylesheets/static.css",
 				"assets/stylesheets/print.css"
 			]
 		},
