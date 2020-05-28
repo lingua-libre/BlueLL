@@ -197,6 +197,9 @@ class BlueLLTemplate extends BaseTemplate {
 					<?php foreach ( $footerLinks["places"] as $key ) { ?>
 						<li id="footer-<?php echo $key ?>"><?php $this->html( $key ) ?></li>
 					<?php } ?>
+					<?php foreach ( $footerLinks["social"] as $key ) { ?>
+						<li id="footer-<?php echo $key; ?>"><a href="<?php echo wfMessage( $key . '-url' )->text(); ?>"><img src="/skins/BlueLL/assets/stylesheets/icons/<?php echo $key; ?>-blue.svg"/></a></li>
+					<?php } ?>
 				</ul>
 			</div>
 			<ul id="footer-right-icons">

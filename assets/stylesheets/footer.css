@@ -65,6 +65,12 @@
 	}
 }
 
+/* Social buttons */
+#footer-twitter img {
+	position: relative;
+	top: 3px;
+}
+
 /* Toolbox */
 #toolbox-menu {
 	position: relative;
