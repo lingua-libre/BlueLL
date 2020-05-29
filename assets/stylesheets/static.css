@@ -79,7 +79,7 @@
 /********************/
 /* Column managment */
 /********************/
-#mw-content-text .columns {
+body:not(.mw-special-Translate) #mw-content-text .columns {
 	display: flex;
 }
 .columns > * {
@@ -182,8 +182,8 @@
 /* Hide content Heading on some specific pages */
 /***********************************************/
 .page-LinguaLibre_Main_Page #contentHeading,
-.page-LinguaLibre_About #contentHeading,
-.page-Help_Main #contentHeading {
+.rootpage-LinguaLibre_About #contentHeading,
+.rootpage-Help_Main #contentHeading {
 	display: none;
 }
 
