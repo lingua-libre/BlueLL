@@ -79,7 +79,7 @@
 /********************/
 /* Column managment */
 /********************/
-.columns {
+#mw-content-text .columns {
 	display: flex;
 }
 .columns > * {
