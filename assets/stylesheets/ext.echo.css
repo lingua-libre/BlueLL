@@ -1,0 +1,20 @@
+#echo-notifications-alerts,
+#echo-notifications-notice {
+	width: 24px;
+	margin-right: 10px;
+}
+
+#pt-notifications-alert,
+#pt-notifications-notice {
+	position: relative;
+	top: 12px;
+}
+
+#pt-notifications-alert .mw-echo-notifications-badge.oo-ui-flaggedElement-unseen::after,
+#pt-notifications-alert .mw-echo-notifications-badge.mw-echo-unseen-notifications::after {
+    background-color: #dd3333;
+}
+#pt-notifications-notice .mw-echo-notifications-badge.oo-ui-flaggedElement-unseen::after,
+#pt-notifications-notice .mw-echo-notifications-badge.mw-echo-unseen-notifications::after {
+    background-color: #3366cc;
+}

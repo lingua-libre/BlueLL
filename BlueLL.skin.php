@@ -74,6 +74,12 @@ class BlueLLTemplate extends BaseTemplate {
 							<?php echo $this->makeLink( "RecordWizard", [ "msg" => "Record", "href" => $recordwizardTitle->getFullURL(), "accesskey" => "r" ] ); ?></a>
 						</li>
 
+						<!-- If user is logged in output echo location -->
+						<?php if ($wgUser->isLoggedIn()): ?>
+							<div id="echo-notifications-alerts"></div>
+							<div id="echo-notifications-notice"></div>
+						<?php endif; ?>
+
 						<!-- Personal menu dropdown -->
 						<li id="personal-menu" class="dropdown mobile-menu">
 							<input id="personal-input" type="checkbox" role="button" aria-labelledby="personal-button" autocomplete="off" class="dropdown-input mobile-menu-input">
@@ -148,15 +154,7 @@ class BlueLLTemplate extends BaseTemplate {
 		</header>
 
 		<section id="page-content">
-			<aside style="display: none;"> <!-- TODO: temporary hidden, how should it be styled ?
-				<!-- If user is logged in output echo location -->
-				<?php if ($wgUser->isLoggedIn()): ?>
-					<div id="echo-notifications">
-						<div id="echo-notifications-alerts"></div>
-						<div id="echo-notifications-messages"></div>
-						<div id="echo-notifications-notice"></div>
-					</div>
-				<?php endif; ?>
+			<aside style="display: none;"> <!-- TODO: temporary hidden, how should it be styled ? -->
 
 				<?php if ( $this->data['sitenotice'] ) { ?><div id="siteNotice" class="sitenotice"><?php $this->html( 'sitenotice' ); ?></div><?php } ?>
 				<?php if ( $this->data['newtalk'] ) { ?><div id="usermessage" class="newtalk"><?php $this->html( 'newtalk' ); ?></div><?php } ?>

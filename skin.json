@@ -31,7 +31,8 @@
 				"assets/stylesheets/content.css",
 				"assets/stylesheets/footer.css",
 				"assets/stylesheets/static.css",
-				"assets/stylesheets/print.css"
+				"assets/stylesheets/print.css",
+				"assets/stylesheets/ext.echo.css"
 			]
 		},
 		"skins.bluell.js": {

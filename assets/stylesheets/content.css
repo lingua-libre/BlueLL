@@ -56,13 +56,6 @@
 	color: white;
 }
 
-#contentHeading h1,
-#contentHeading h2,
-#contentHeading h4 {
-	z-index: 5;
-	position: relative;
-}
-
 #contentHeading h4 {
 	display: none;
 }
@@ -78,7 +71,6 @@
 	background-position: bottom right;
 	background-repeat: no-repeat;
 	background-size: auto 100%;
-	z-index: 2
 }
 #mw-indicator-mw-helplink {
 	display: none;
