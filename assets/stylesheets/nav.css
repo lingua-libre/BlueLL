@@ -63,11 +63,10 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 }
-#top-bar-bottom-menu > *:nth-last-child(3) {
-	margin-left: auto;
+/* Main menu */
+#top-bar-bottom-menu > ul:first-child {
+	margin-right: auto;
 }
-
-/* Main menu items */
 #top-bar-bottom-menu > ul:first-child a {
 	display: block;
 	height: 20px;
@@ -356,7 +355,7 @@
 /*****************************/
 /* DROPDOWN MENU FOR DESKTOP */
 /*****************************/
-@media screen and (min-width: 850px) {
+@media screen and (min-width: 800px) {
 	.dropdown {
 		position: relative;
 	}
@@ -491,9 +490,6 @@
 @media screen and (max-width: 1049px) {
 	#top-bar-bottom-menu > ul:nth-child(2) {
 		display: none;
-	}
-	#actions-menu {
-		margin-left: auto;
 	}
 }
 @media screen and (max-width: 849px) {
