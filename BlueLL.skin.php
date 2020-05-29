@@ -117,13 +117,21 @@ class BlueLLTemplate extends BaseTemplate {
 							<input id="hamburger-input" type="checkbox" role="button" aria-labelledby="hamburger-label" autocomplete="off" class="mobile-menu-input">
 							<label id="hamburger-button" for="hamburger-input"  class="mobile-menu-label"><?php echo wfMessage( 'bluell-menutitle' )->text() ?></label>
 							<ul id="hamburger" class="mobile-menu-content">
+								<!-- Hamburger search form -->
+								<li id="m-searchitem">
+									<form action="<?php $this->text( 'wgScript' ); ?>" id="m-searchform" class="mw-search" role="search">
+										<?php echo $this->makeSearchInput(array('placeholder' => wfMessage('Linksearch-ok')->text(), 'id' => 'm-searchInput') ); ?>
+										<button type="submit" title="<?php echo wfMessage( 'search' )->text() ?>"></button>
+									</form>
+								</li>
+								<!-- Hamburger navigation -->
 								<?php foreach ( $this->getSidebar() as $boxName => $box ) { if ( $box['header'] != wfMessage( 'toolbox' )->text() && $box['id'] != 'p-lang'  ) { ?>
 									<?php if ( is_array( $box['content'] ) ) { ?>
 										<?php foreach ( $box['content'] as $key => $item ) { $item[ 'id' ] = "m" . $item[ 'id' ]; echo $this->makeListItem( $key, $item ); } ?>
 										<?php break; /* Display only the main menu in the hamburger menu */ ?>
 									<?php } } ?>
 								<?php } ?>
-
+								<!-- Hamburger Actions -->
 								<li id="m-action-menu">
 									<a href="#"><?php echo wfMessage( 'actions' )->text() ?></a>
 									<ul>
