@@ -1,5 +1,7 @@
 <?php
 
+use Wikimedia\AtEase\AtEase;
+
 /**
  * Skin file for BlueLL
  *
@@ -11,12 +13,6 @@
 class SkinBlueLL extends SkinTemplate {
 	public $skinname = 'bluell', $stylename = 'bluell', $template = 'BlueLLTemplate', $useHeadElement = true;
 
-	public function setupSkinUserCss(OutputPage $out) {
-		parent::setupSkinUserCss($out);
-		$out->addHeadItem('ie-meta', '<meta http-equiv="X-UA-Compatible" content="IE=edge" />');
-		$out->addModuleStyles('skins.bluell.styles');
-	}
-
 	public function initPage( OutputPage $out ) {
 		global $wgLocalStylePath;
 		parent::initPage($out);
@@ -24,14 +20,21 @@ class SkinBlueLL extends SkinTemplate {
 		$viewport_meta = 'width=device-width, user-scalable=yes, initial-scale=1.0';
 		$out->addMeta('viewport', $viewport_meta);
 		$out->addModules('skins.bluell.js');
+		$out->addHeadItem('ie-meta', '<meta http-equiv="X-UA-Compatible" content="IE=edge" />');
+		$out->addModuleStyles('skins.bluell.styles');
 	}
 
 }
 
 class BlueLLTemplate extends BaseTemplate {
 	public function execute() {
-		global $wgUser;
-		wfSuppressWarnings();
+		global $wgUser, $wgVersion;
+		if ( method_exists( 'AtEase', 'suppressWarnings' ) ) {
+			// MW >= 1.33
+			AtEase::suppressWarnings();
+		} else {
+			Wikimedia\suppressWarnings();
+		}
 		$this->html('headelement');
 		$body = '';
 
@@ -69,10 +72,12 @@ class BlueLLTemplate extends BaseTemplate {
 						</li>
 
 						<!-- Record call-to-action -->
+						<?php if ( class_exists( 'SpecialRecordWizard' ) ) {?>
 						<li id="p-record">
 							<?php $recordwizardTitle = Title::newFromText( "Special:RecordWizard" ); ?>
 							<?php echo $this->makeLink( "RecordWizard", [ "msg" => "Record", "href" => $recordwizardTitle->getFullURL(), "accesskey" => "r" ] ); ?></a>
 						</li>
+						<?php }?>
 
 						<!-- If user is logged in output echo location -->
 						<?php if ($wgUser->isLoggedIn()): ?>
@@ -94,7 +99,7 @@ class BlueLLTemplate extends BaseTemplate {
 
 					<div id="top-bar-bottom-menu">
 						<?php foreach ( $this->getSidebar() as $boxName => $box ) { if ( $box['header'] != wfMessage( 'toolbox' )->text() && $box['id'] != 'p-lang'  ) { ?>
-							<ul id="<?php echo Sanitizer::escapeId( $box['id'] ) ?>"<?php echo Linker::tooltip( $box['id'] ) ?>>
+							<ul id="<?php echo Sanitizer::escapeIdForAttribute( $box['id'] ) ?>"<?php echo Linker::tooltip( $box['id'] ) ?>>
 								<?php if ( is_array( $box['content'] ) ) { ?>
 								<?php foreach ( $box['content'] as $key => $item ) { echo $this->makeListItem( $key, $item ); } ?>
 								<?php } } ?>
@@ -116,7 +121,12 @@ class BlueLLTemplate extends BaseTemplate {
 							<label id="actions-button" for="actions-input" class="dropdown-label"><?php echo wfMessage( 'actions' )->text() ?></label>
 							<ul id="actions" class="dropdown-content">
 								<?php foreach( $this->data['content_actions'] as $key => $item ) { if ( $key === 'edit' || $key === 'viewsource' ) { continue; } echo preg_replace(array('/\sprimary="1"/','/\scontext="[a-z]+"/','/\srel="archives"/'),'',$this->makeListItem($key, $item)); } ?>
-								<?php wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this, true ) );  ?>
+								<?php
+									if ( version_compare( $wgVersion, '1.35', '<' ) ) {
+										wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this, true ) );
+									}
+								?>
+
 							</ul>
 						</div>
 						<aside id="hamburger-menu" class="mobile-menu">
@@ -142,7 +152,11 @@ class BlueLLTemplate extends BaseTemplate {
 									<a href="#"><?php echo wfMessage( 'actions' )->text() ?></a>
 									<ul>
 										<?php foreach( $this->data['content_actions'] as $key => $item ) { $item[ 'id' ] = "m" . $item[ 'id' ]; echo preg_replace(array('/\sprimary="1"/','/\scontext="[a-z]+"/','/\srel="archives"/'),'',$this->makeListItem($key, $item)); } ?>
-										<?php wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this, true ) );  ?>
+										<?php
+											if ( version_compare( $wgVersion, '1.35', '<' ) ) {
+												wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this, true ) );
+											}
+										?>
 									</ul>
 								</li>
 							</ul>
@@ -193,9 +207,9 @@ class BlueLLTemplate extends BaseTemplate {
 
 		<footer id="footer">
 			<div id="footer-left">
-				<?php $footerLinks = $this->getFooterLinks(); ?>
+				<?php $footerLinks = $this->getFooterLinks();?>
 				<ul id="footer-left-top">
-					<?php foreach ( $footerLinks["info"] as $key ) { ?>
+					<?php foreach ( $footerLinks["info"] ?? [] as $key ) { ?>
 						<li id="footer-<?php echo $key ?>"><?php $this->html( $key ) ?></li>
 					<?php } ?>
 				</ul>
@@ -203,7 +217,7 @@ class BlueLLTemplate extends BaseTemplate {
 					<?php foreach ( $footerLinks["places"] as $key ) { ?>
 						<li id="footer-<?php echo $key ?>"><?php $this->html( $key ) ?></li>
 					<?php } ?>
-					<?php foreach ( $footerLinks["social"] as $key ) { ?>
+					<?php foreach ( $footerLinks["social"] ?? [] as $key ) { ?>
 						<li id="footer-<?php echo $key; ?>"><a href="<?php echo wfMessage( $key . '-url' )->text(); ?>"><img src="/skins/BlueLL/assets/stylesheets/icons/<?php echo $key; ?>-blue.svg"/></a></li>
 					<?php } ?>
 				</ul>
@@ -235,7 +249,12 @@ class BlueLLTemplate extends BaseTemplate {
 		</html>
 
 <?php
-		wfRestoreWarnings();
+		if ( method_exists( 'AtEase', 'suppressWarnings' ) ) {
+			// MW >= 1.33
+			AtEase::restoreWarnings();
+		} else {
+			Wikimedia\restoreWarnings();
+		}
 	}
 }
 ?>
