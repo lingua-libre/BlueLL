@@ -168,7 +168,7 @@ class BlueLLTemplate extends BaseTemplate {
 		</header>
 
 		<section id="page-content">
-			<aside style="display: none;"> <!-- TODO: temporary hidden, how should it be styled ? -->
+			<aside> <!-- TODO: add style -->
 
 				<?php if ( $this->data['sitenotice'] ) { ?><div id="siteNotice" class="sitenotice"><?php $this->html( 'sitenotice' ); ?></div><?php } ?>
 				<?php if ( $this->data['newtalk'] ) { ?><div id="usermessage" class="newtalk"><?php $this->html( 'newtalk' ); ?></div><?php } ?>
