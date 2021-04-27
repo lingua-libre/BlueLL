@@ -214,12 +214,11 @@ class BlueLLTemplate extends BaseTemplate {
 					<?php } ?>
 				</ul>
 				<ul id="footer-left-bottom">
-					<?php foreach ( $footerLinks["places"] as $key ) { ?>
+					<?php foreach ( $footerLinks["places"] as $key ) { if( substr( $key, 0, 7 ) !== 'social-' ) { ?>
 						<li id="footer-<?php echo $key ?>"><?php $this->html( $key ) ?></li>
-					<?php } ?>
-					<?php foreach ( $footerLinks["social"] ?? [] as $key ) { ?>
-						<li id="footer-<?php echo $key; ?>"><a href="<?php echo wfMessage( $key . '-url' )->text(); ?>"><img src="/skins/BlueLL/assets/stylesheets/icons/<?php echo $key; ?>-blue.svg"/></a></li>
-					<?php } ?>
+					<?php } else { ?>
+						<li id="footer-<?php echo $key; ?>"><a href="<?php echo wfMessage( $key . '-url' )->text(); ?>"><img src="/skins/BlueLL/assets/stylesheets/icons/<?php echo substr( $key, 7 ); ?>-blue.svg"/></a></li>
+					<?php } } ?>
 				</ul>
 			</div>
 			<ul id="footer-right-icons">

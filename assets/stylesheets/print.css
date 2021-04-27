@@ -2,4 +2,8 @@
 
 @media print {
 
+.printfooter {
+	display: block;
+}
+
 }

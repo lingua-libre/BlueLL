@@ -1,6 +1,6 @@
 {
 	"name": "BlueLL",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"author": [
 		"Antoine Lamielle"
 	],
@@ -8,6 +8,9 @@
 	"descriptionmsg": "bluell-desc",
 	"license-name": "BSD-2-Clause",
 	"type": "skin",
+	"requires": {
+		"MediaWiki": ">= 1.35.0"
+	},
 	"ValidSkinNames": {
 		"bluell": "BlueLL"
 	},
