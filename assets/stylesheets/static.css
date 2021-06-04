@@ -221,6 +221,8 @@ body:not(.mw-special-Translate) #mw-content-text .columns {
 }
 .mainpage-crop-1 p {
 	line-height: 0;
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 #languages-overview ul {
 	margin-top: 0 !important;
