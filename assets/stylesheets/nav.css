@@ -401,6 +401,7 @@
 	}
 	#actions.dropdown-content {
 		box-shadow: inset 0 14px 6px -10px rgba(0, 0, 0, 0.08), 0 4px 6px 0 rgba(0, 0, 0, 0.08);
+		margin-top: 0px;
 	}
 	/* invert the direction of the dropdown */
 	#toolbox.dropdown-content {
