@@ -397,7 +397,7 @@
 		border-radius: 0px 0px 5px 5px;
 		border: 1px solid rgba(0, 0, 0, 0.05);
 		border-top: 0;
-		padding-top: 8px;
+		padding: 8px;
 	}
 	#actions.dropdown-content {
 		box-shadow: inset 0 14px 6px -10px rgba(0, 0, 0, 0.08), 0 4px 6px 0 rgba(0, 0, 0, 0.08);
@@ -445,6 +445,7 @@
 		bottom: 0;
 		width: 320px;
 		max-width: 80%;
+		padding-left: 0;
 		z-index: 150;
 		overflow-y: auto;
 		background-color: #eaecf0;
