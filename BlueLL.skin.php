@@ -75,7 +75,7 @@ class BlueLLTemplate extends BaseTemplate {
 						<?php if ( class_exists( 'SpecialRecordWizard' ) ) {?>
 						<li id="p-record">
 							<?php $recordwizardTitle = Title::newFromText( "Special:RecordWizard" ); ?>
-							<?php echo $this->makeLink( "RecordWizard", [ "msg" => "Record", "href" => $recordwizardTitle->getFullURL(), "accesskey" => "r" ] ); ?></a>
+							<?php echo $this->makeLink( "RecordWizard", [ "msg" => "bluell-record", "href" => $recordwizardTitle->getFullURL(), "accesskey" => "r" ] ); ?></a>
 						</li>
 						<?php }?>
 
