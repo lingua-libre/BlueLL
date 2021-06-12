@@ -7,5 +7,5 @@
 	"skinname-bluell": "{{Notranslate}}\n\nThis this is the name of the skin.",
 	"bluell-desc": "{{desc|what=skin|name=BlueLL|url=https://www.mediawiki.org/wiki/Skin:BlueLL}}",
 	"bluell-menutitle": "This is a label.",
-	"record": "Button to RecordWizard"
+	"bluell-record": "Button to RecordWizard"
 }
