@@ -23,6 +23,7 @@ a {
 }
 a:hover {
 	color: #447ff5;
+	text-decoration: underline;
 }
 a:active {
 	color: #2a4b8d;
