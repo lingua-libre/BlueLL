@@ -28,6 +28,18 @@ a:active {
 	color: #2a4b8d;
 }
 
+/* Red links */
+a.new {
+	color: #dd3333;
+}
+a.new:hover {
+	color: #e05252;
+}
+a.new:active {
+	color: #b32424;
+}
+
+
 /* Preload some hovered images */
 body:after {
 	position: absolute; overflow: hidden; width:0; height:0; z-index: -10;
