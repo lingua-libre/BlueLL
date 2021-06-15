@@ -191,3 +191,10 @@
 #mw-content-text table.wikitable th.headerSort {
 	padding-right: 1.25em;
 }
+
+/*********/
+/* Links */
+/*********/
+a.mw-redirect {
+	color: #a343a3; /* purple-ish shade */
+}
