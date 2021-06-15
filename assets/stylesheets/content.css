@@ -198,3 +198,24 @@
 a.mw-redirect {
 	color: #a343a3; /* purple-ish shade */
 }
+
+/********************/
+/* Float left/right */
+/********************/
+div.tright, div.floatright, table.floatright {
+    clear: right;
+    float: right;
+} 
+
+div.floatright, table.floatright {
+    margin: 0 0 0.5em 0.5em;
+}
+
+div.tleft, div.floatleft, table.floatleft {
+    clear: left;
+    float: left;
+}
+
+div.floatleft, table.floatleft {
+    margin: 0 0.5em 0.5em 0;
+}
