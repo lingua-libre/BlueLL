@@ -17,10 +17,6 @@
 	z-index: 0;
 }
 
-#contentHeading .mw-indicators {
-	z-index: -1;
-}
-
 #contentHeading > hgroup {
 	max-width: 1200px;
 	margin: auto;
@@ -65,10 +61,6 @@
 	display: none;
 }
 
-/* content
-header#contentHeading { z-index: 0; }
-header#contentHeading .mw-indicators { z-index: -1; }
-
 /* Indicators */
 .mw-indicators, .mw-indicator {
 	position: absolute;
@@ -76,6 +68,8 @@ header#contentHeading .mw-indicators { z-index: -1; }
 	height: 100%;
 	bottom: 0;
 	right: 0;
+	
+	z-index: -1;
 
 	background-position: bottom right;
 	background-repeat: no-repeat;
