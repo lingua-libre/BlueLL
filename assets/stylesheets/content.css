@@ -175,3 +175,16 @@
 	font-size: 18px;
 	line-height: 1.67;
 }
+
+/**************/
+/* Wikitables */
+/**************/
+#mw-content-text table.wikitable tr > * {
+	border:1px solid grey;
+	padding:.2em .5em .2em .5em;
+}
+
+/* Increase the padding to give more space for the "sort" button */
+#mw-content-text table.wikitable th.headerSort {
+	padding-right: 1.25em;
+}
