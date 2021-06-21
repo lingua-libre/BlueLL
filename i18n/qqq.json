@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Antoine Lamielle"
+			"Antoine Lamielle",
+			"Robby"
 		]
 	},
 	"skinname-bluell": "{{Notranslate}}\n\nThis this is the name of the skin.",
 	"bluell-desc": "{{desc|what=skin|name=BlueLL|url=https://www.mediawiki.org/wiki/Skin:BlueLL}}",
-	"bluell-menutitle": "This is a label.",
+	"bluell-menutitle": "This is a label.\n{{identical|Menu}}",
 	"bluell-record": "Button to RecordWizard"
 }
