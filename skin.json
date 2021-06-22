@@ -27,8 +27,8 @@
 		"skins.bluell.styles": {
 			"position": "top",
 			"styles": [
-				"assets/stylesheets/normalize.css",
-				"assets/stylesheets/font-awesome.css",
+				"assets/stylesheets/normalize.min.css",
+				"assets/stylesheets/font-awesome.min.css",
 				"assets/stylesheets/main.css",
 				"assets/stylesheets/nav.css",
 				"assets/stylesheets/content.css",
