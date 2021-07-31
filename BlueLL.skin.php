@@ -80,7 +80,7 @@ class BlueLLTemplate extends BaseTemplate {
 						<?php }?>
 
 						<!-- If user is logged in output echo location -->
-						<?php if ($wgUser->isLoggedIn()): ?>
+						<?php if ($wgUser->isRegistered()): ?>
 							<div id="echo-notifications-alerts"></div>
 							<div id="echo-notifications-notice"></div>
 						<?php endif; ?>
