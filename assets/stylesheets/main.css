@@ -11,6 +11,7 @@ body {
 }
 * {
    font-family: Lato;
+   font-variant-ligatures: no-common-ligatures;
 }
 
 .clear_both {
