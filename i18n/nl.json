@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Mainframe98",
 			"Romaine"
 		]
 	},
-	"bluell-menutitle": "Menu"
+	"bluell-menutitle": "Menu",
+	"bluell-record": "Opnemen"
 }
