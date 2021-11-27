@@ -163,11 +163,21 @@
 #mw-content-text ol + p,
 #mw-content-text ol + ul,
 #mw-content-text ol + ol {
-	margin-top: 30px;
+	margin-top: 16px;
 }
 
 #mw-content-text dl {
 	margin-top: 15px;
+}
+
+#mw-content-text h2,
+#mw-content-text h3 {
+  margin-top: 1.3em;
+}
+
+#mw-content-text h4,
+#mw-content-text h5 {
+  margin-top: .8em!important;
 }
 
 .mw-parser-output p,
