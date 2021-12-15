@@ -168,7 +168,7 @@ class BlueLLTemplate extends BaseTemplate {
 		</header>
 
 		<section id="page-content">
-			<aside> <!-- TODO: add style -->
+			<aside style="max-width: none;"> <!-- TODO: move style to its own class? -->
 
 				<?php if ( $this->data['sitenotice'] ) { ?><div id="siteNotice" class="sitenotice"><?php $this->html( 'sitenotice' ); ?></div><?php } ?>
 				<?php if ( $this->data['newtalk'] ) { ?><div id="usermessage" class="newtalk"><?php $this->html( 'newtalk' ); ?></div><?php } ?>
