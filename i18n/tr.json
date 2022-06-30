@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hedda"
+			"WikiLucas00"
 		]
 	},
 	"bluell-desc": "Temiz tasarım esasen Lingua Libre için geliştirildi.",
+	"bluell-menu-statistics": "İstatistikler",
+	"bluell-menu-library": "Ses kütüphanesi",
 	"bluell-menutitle": "Menü",
 	"bluell-record": "Kayıt"
 }

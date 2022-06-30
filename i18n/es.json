@@ -1,10 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Agent"
+			"0x010C",
+			"Agent",
+			"Pamputt"
 		]
 	},
 	"bluell-desc": "Diseño limpio inicialmente desarrollado para Lingua Libre.",
+	"bluell-menu-statistics": "Estadísticas",
+	"bluell-menu-library": "Archivos de datos",
 	"bluell-menutitle": "Menú",
 	"bluell-record": "Grabar"
 }

@@ -7,6 +7,9 @@
 	},
 	"skinname-bluell": "{{Notranslate}}\n\nThis this is the name of the skin.",
 	"bluell-desc": "{{desc|what=skin|name=BlueLL|url=https://www.mediawiki.org/wiki/Skin:BlueLL}}",
+	"bluell-menu-statistics": "Label for top menu. Leads to the statistics page.",
+	"bluell-menu-library": "Label for top menu. Leads to the library tool.",
+	"bluell-menu-datasets": "Label for top menu. Leads to the list of files with datasets.",
 	"bluell-menutitle": "This is a label.\n{{identical|Menu}}",
 	"bluell-record": "Button to RecordWizard"
 }

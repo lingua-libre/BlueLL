@@ -1,11 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"Antoine Lamielle"
+			"0x010C",
+			"Amire80",
+			"Antoine Lamielle",
+			"Trizek",
+			"WikiLucas00"
 		]
 	},
 	"skinname-bluell": "BlueLL",
 	"bluell-desc": "Clean design initially developed for Lingua Libre.",
+	"bluell-menu-statistics": "Statistics",
+	"bluell-menu-library": "Sound library",
+	"bluell-menu-datasets": "Datasets",
 	"bluell-menutitle": "Menu",
 	"bluell-record": "Record"
 }

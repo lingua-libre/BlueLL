@@ -1,10 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sabelöga"
+			"Sabelöga",
+			"Pamputt"
 		]
 	},
 	"bluell-desc": "Ren utformning ursprungligen utvecklad för Lingua Libre.",
+	"bluell-menu-statistics": "Statistik",
+	"bluell-menu-library": "Ljudbiblioteket",
+	"bluell-menu-datasets": "Datauppsättningar",
 	"bluell-menutitle": "Meny",
 	"bluell-record": "Spela in"
 }

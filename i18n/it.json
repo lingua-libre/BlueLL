@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"0x010C",
 			"Beta16"
 		]
 	},
+	"bluell-menu-statistics": "Dataset",
 	"bluell-menutitle": "Menu",
 	"bluell-record": "Registra"
 }

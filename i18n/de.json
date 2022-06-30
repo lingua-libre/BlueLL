@@ -1,8 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Lorem Ipsum"
+			"0x010C",
+			"Lorem Ipsum",
+			"WikiLucas00"
 		]
 	},
+	"bluell-menu-statistics": "Statistiken",
+	"bluell-menu-datasets": "Datensätze",
 	"bluell-menutitle": "Menü"
 }

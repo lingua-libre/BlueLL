@@ -1,10 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Antoine Lamielle"
+			"0x010C",
+			"Antoine Lamielle",
+			"Trizek",
+			"WikiLucas00"
 		]
 	},
 	"bluell-desc": "Habillage épuré initialement développé pour Lingua Libre.",
+	"bluell-menu-statistics": "Statistiques",
+	"bluell-menu-library": "Sonothèque",
+	"bluell-menu-datasets": "Jeux de données",
 	"bluell-menutitle": "Menu",
 	"bluell-record": "Enregistrer"
 }

@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Rail"
+			"Rail",
+			"Pamputt"
 		]
 	},
 	"bluell-desc": "Czysty design początkowo opracowany przez Lingua Libre"
+	"bluell-menu-statistics": "Statystyki",
+	"bluell-menu-datasets": "Zbiory danych"
 }
