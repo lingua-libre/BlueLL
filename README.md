@@ -32,4 +32,4 @@ To activate BlueLL for all users and anonymous visitors, you need to set the `$w
 ## Issue tracker
 [Wikimedia Pabricator](https://phabricator.wikimedia.org/tag/lingua_libre/) is our main issues tracker, Wikimedians can create "New Task" or open "New Bug Report" there.
 
-For non-wikimedians users, please open [a github issue](../issues).
+For non-wikimedians users, please open [a github issue](../../issues).
