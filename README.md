@@ -28,3 +28,8 @@ This will activate BlueLL in your installation. At this point you can select it 
 To activate BlueLL for all users and anonymous visitors, you need to set the `$wgDefaultSkin` variable and set it to `bluell`.
 
     $wgDefaultSkin = "bluell";
+
+## Issue tracker
+[Wikimedia Pabricator](https://phabricator.wikimedia.org/tag/lingua_libre/) is our main issues tracker, Wikimedians can create "New Task" or open "New Bug Report" there.
+
+For non-wikimedians users, please open [a github issue](../issues).
