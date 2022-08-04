@@ -262,7 +262,7 @@ body:not(.mw-special-Translate) #mw-content-text .columns {
 	display: flex;
 
 	width: 360px;
-	height: 80px;
+	min-height: 80px;
 
 	margin-top: 12px;
 	margin-bottom: 20px;
@@ -279,7 +279,9 @@ body:not(.mw-special-Translate) #mw-content-text .columns {
 
 	box-sizing: border-box;
 	width: 56px;
+	min-width: 56px;
 	height: 56px;
+	min-height: 56px;
 	margin-left: 15px;
 	margin-right: 15px;
 
