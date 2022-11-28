@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Msz2001",
 			"Rail"
 		]
 	},
-	"bluell-desc": "Czysty design początkowo opracowany przez Lingua Libre"
+	"bluell-desc": "Czysty design, początkowo opracowany przez Lingua Libre.",
+	"bluell-menutitle": "Menu",
+	"bluell-record": "Nagraj"
 }
