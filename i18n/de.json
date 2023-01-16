@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Justman10000",
 			"Lorem Ipsum"
 		]
 	},
-	"bluell-menutitle": "Menü"
+	"bluell-desc": "Das saubere Design wurde ursprünglich für Lingua Libre entwickelt.",
+	"bluell-menutitle": "Menü",
+	"bluell-record": "Aufzeichnen"
 }
