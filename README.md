@@ -29,7 +29,7 @@ To activate BlueLL for all users and anonymous visitors, you need to set the `$w
 
     $wgDefaultSkin = "bluell";
 
-## Issue tracker
+## Contribute
 [Wikimedia Pabricator](https://phabricator.wikimedia.org/tag/lingua_libre/) is our main issues tracker.
 - Wikimedians can create "New Task" or open "New Bug Report" [on Phabricator](https://phabricator.wikimedia.org/tag/lingua_libre/).
 - Non-wikimedians users, please open [an Github issue here](../../issues).
