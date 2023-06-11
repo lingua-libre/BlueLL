@@ -1,6 +1,6 @@
 # MediaWiki BlueLL Skin
 
-[MediaWiki](https://www.mediawiki.org) skin focused on a clean and elegant design, initially developed for [Lingua Libre](https://lingualibre.org).
+[MediaWiki](https://www.mediawiki.org) skin focused on a clean and elegant design, initially developed for [LinguaLibre.org](https://lingualibre.org).
 
 
 ## Download
