@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"BerryAVGN",
 			"Kareyac"
 		]
 	},
+	"bluell-desc": "Чистый дизайн, первоначально разработанный для Lingua Libre.",
 	"bluell-menutitle": "Меню",
 	"bluell-record": "Запись"
 }
