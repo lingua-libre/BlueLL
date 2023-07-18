@@ -9,10 +9,26 @@
 	"license-name": "BSD-2-Clause",
 	"type": "skin",
 	"requires": {
-		"MediaWiki": ">= 1.35.0"
+		"MediaWiki": ">= 1.39.0"
 	},
 	"ValidSkinNames": {
-		"bluell": "BlueLL"
+		"bluell": {
+			"class": "SkinTemplate",
+			"args": [
+				{
+					"name": "bluell",
+					"responsive": true,
+					"template": "BlueLLTemplate",
+					"bodyOnly": true,
+					"scripts": [
+						"skins.bluell.js"
+					],
+					"styles": [
+						"skins.bluell.styles"
+					]
+				}
+			]
+		}
 	},
 	"MessagesDirs": {
 		"SkinBlueLL": [
