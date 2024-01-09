@@ -8,34 +8,17 @@ use Wikimedia\AtEase\AtEase;
  * @file
  * @ingroup Skins
  */
-
-
-class SkinBlueLL extends SkinTemplate {
-	public $skinname = 'bluell', $stylename = 'bluell', $template = 'BlueLLTemplate', $useHeadElement = true;
-
-	public function initPage( OutputPage $out ) {
-		global $wgLocalStylePath;
-		parent::initPage($out);
-
-		$viewport_meta = 'width=device-width, user-scalable=yes, initial-scale=1.0';
-		$out->addMeta('viewport', $viewport_meta);
-		$out->addModules('skins.bluell.js');
-		$out->addHeadItem('ie-meta', '<meta http-equiv="X-UA-Compatible" content="IE=edge" />');
-		$out->addModuleStyles('skins.bluell.styles');
-	}
-
-}
-
 class BlueLLTemplate extends BaseTemplate {
 	public function execute() {
-		global $wgUser, $wgVersion;
+		$skin = $this->getSkin();
+		$user = $skin->getUser();
+		$version = $skin->getConfig()->get( 'Version' );
 		if ( method_exists( 'AtEase', 'suppressWarnings' ) ) {
 			// MW >= 1.33
 			AtEase::suppressWarnings();
 		} else {
 			Wikimedia\suppressWarnings();
 		}
-		$this->html('headelement');
 		$body = '';
 
 ?>
@@ -80,7 +63,7 @@ class BlueLLTemplate extends BaseTemplate {
 						<?php }?>
 
 						<!-- If user is logged in output echo location -->
-						<?php if ($wgUser->isRegistered()): ?>
+						<?php if ($user->isRegistered()): ?>
 							<div id="echo-notifications-alerts"></div>
 							<div id="echo-notifications-notice"></div>
 						<?php endif; ?>
@@ -122,7 +105,7 @@ class BlueLLTemplate extends BaseTemplate {
 							<ul id="actions" class="dropdown-content">
 								<?php foreach( $this->data['content_actions'] as $key => $item ) { if ( $key === 'edit' || $key === 'viewsource' ) { continue; } echo preg_replace(array('/\sprimary="1"/','/\scontext="[a-z]+"/','/\srel="archives"/'),'',$this->makeListItem($key, $item)); } ?>
 								<?php
-									if ( version_compare( $wgVersion, '1.35', '<' ) ) {
+									if ( version_compare( $version, '1.35', '<' ) ) {
 										wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this, true ) );
 									}
 								?>
@@ -153,7 +136,7 @@ class BlueLLTemplate extends BaseTemplate {
 									<ul>
 										<?php foreach( $this->data['content_actions'] as $key => $item ) { $item[ 'id' ] = "m" . $item[ 'id' ]; echo preg_replace(array('/\sprimary="1"/','/\scontext="[a-z]+"/','/\srel="archives"/'),'',$this->makeListItem($key, $item)); } ?>
 										<?php
-											if ( version_compare( $wgVersion, '1.35', '<' ) ) {
+											if ( version_compare( $version, '1.35', '<' ) ) {
 												wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this, true ) );
 											}
 										?>
@@ -241,12 +224,6 @@ class BlueLLTemplate extends BaseTemplate {
 				<?php } ?>
 			</ul>
 		</footer>
-
-		<?php $this->printTrail(); ?>
-
-		</body>
-		</html>
-
 <?php
 		if ( method_exists( 'AtEase', 'suppressWarnings' ) ) {
 			// MW >= 1.33
