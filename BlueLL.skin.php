@@ -1,7 +1,5 @@
 <?php
 
-use Wikimedia\AtEase\AtEase;
-
 /**
  * Skin file for BlueLL
  *
@@ -13,12 +11,6 @@ class BlueLLTemplate extends BaseTemplate {
 		$skin = $this->getSkin();
 		$user = $skin->getUser();
 		$version = $skin->getConfig()->get( 'Version' );
-		if ( method_exists( 'AtEase', 'suppressWarnings' ) ) {
-			// MW >= 1.33
-			AtEase::suppressWarnings();
-		} else {
-			Wikimedia\suppressWarnings();
-		}
 		$body = '';
 
 ?>
@@ -225,12 +217,6 @@ class BlueLLTemplate extends BaseTemplate {
 			</ul>
 		</footer>
 <?php
-		if ( method_exists( 'AtEase', 'suppressWarnings' ) ) {
-			// MW >= 1.33
-			AtEase::restoreWarnings();
-		} else {
-			Wikimedia\restoreWarnings();
-		}
 	}
 }
 ?>
