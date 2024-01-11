@@ -7,6 +7,21 @@
  * @ingroup Skins
  */
 class BlueLLTemplate extends BaseTemplate {
+	/**
+	 * https://phabricator.wikimedia.org/T278266
+	 */
+	private function getIcons() {
+		$footericons = $this->get('footericons');
+		foreach ( $footericons as $footerIconsKey => &$footerIconsBlock ) {
+			foreach ( $footerIconsBlock as $footerIconKey => $footerIcon ) {
+				if ( !isset( $footerIcon['src'] ) ) {
+					unset( $footerIconsBlock[$footerIconKey] );
+				}
+			}
+		}
+		return $footericons;
+	}
+
 	public function execute() {
 		$skin = $this->getSkin();
 		$user = $skin->getUser();
@@ -194,7 +209,7 @@ class BlueLLTemplate extends BaseTemplate {
 					<label id="toolbox-mask" for="toolbox-input" class="mobile-menu-mask"></label>
 				</li>
 
-				<?php foreach ( $this->getFooterIcons( "icononly" ) as $blockName => $footerIcons ) { ?>
+				<?php foreach ( $this->getIcons() as $blockName => $footerIcons ) { ?>
 					<li class="<?php echo $blockName ?>">
 						<?php foreach ( $footerIcons as $icon ) { ?>
 							<?php echo $this->getSkin()->makeFooterIcon( $icon, "withImage" ); ?>
