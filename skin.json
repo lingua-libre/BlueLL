@@ -9,7 +9,7 @@
 	"license-name": "BSD-2-Clause",
 	"type": "skin",
 	"requires": {
-		"MediaWiki": ">= 1.39.0"
+		"MediaWiki": ">= 1.41.0"
 	},
 	"ValidSkinNames": {
 		"bluell": {

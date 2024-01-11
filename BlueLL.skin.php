@@ -10,7 +10,6 @@ class BlueLLTemplate extends BaseTemplate {
 	public function execute() {
 		$skin = $this->getSkin();
 		$user = $skin->getUser();
-		$version = $skin->getConfig()->get( 'Version' );
 		$body = '';
 
 ?>
@@ -96,11 +95,6 @@ class BlueLLTemplate extends BaseTemplate {
 							<label id="actions-button" for="actions-input" class="dropdown-label"><?php echo wfMessage( 'actions' )->text() ?></label>
 							<ul id="actions" class="dropdown-content">
 								<?php foreach( $this->data['content_actions'] as $key => $item ) { if ( $key === 'edit' || $key === 'viewsource' ) { continue; } echo preg_replace(array('/\sprimary="1"/','/\scontext="[a-z]+"/','/\srel="archives"/'),'',$this->makeListItem($key, $item)); } ?>
-								<?php
-									if ( version_compare( $version, '1.35', '<' ) ) {
-										wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this, true ) );
-									}
-								?>
 
 							</ul>
 						</div>
@@ -127,11 +121,6 @@ class BlueLLTemplate extends BaseTemplate {
 									<a href="#"><?php echo wfMessage( 'actions' )->text() ?></a>
 									<ul>
 										<?php foreach( $this->data['content_actions'] as $key => $item ) { $item[ 'id' ] = "m" . $item[ 'id' ]; echo preg_replace(array('/\sprimary="1"/','/\scontext="[a-z]+"/','/\srel="archives"/'),'',$this->makeListItem($key, $item)); } ?>
-										<?php
-											if ( version_compare( $version, '1.35', '<' ) ) {
-												wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this, true ) );
-											}
-										?>
 									</ul>
 								</li>
 							</ul>
