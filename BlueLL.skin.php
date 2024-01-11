@@ -203,7 +203,8 @@ class BlueLLTemplate extends BaseTemplate {
 					<input id="toolbox-input" type="checkbox" role="button" aria-labelledby="toolbox-button" autocomplete="off" class="dropdown-input mobile-menu-input">
 					<label id="toolbox-button" for="toolbox-input" class="dropdown-label mobile-menu-label"><?php echo wfMessage( 'toolbox' )->text() ?></label>
 					<ul id="toolbox" class="dropdown-content mobile-menu-content">
-						<?php foreach ( $this->data['toolbox'] as $key => $item ) { echo $this->makeListItem($key, $item); } ?>
+						<!-- https://phabricator.wikimedia.org/T279390 -->
+						<?php foreach ( $this->data['sidebar']['TOOLBOX'] as $key => $item ) { echo $this->makeListItem($key, $item); } ?>
 						<li id="n-recentchanges"><?php echo Linker::specialLink('Recentchanges') ?></li>
 					</ul>
 					<label id="toolbox-mask" for="toolbox-input" class="mobile-menu-mask"></label>
