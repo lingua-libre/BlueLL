@@ -1,7 +1,5 @@
 <?php
 
-use Wikimedia\AtEase\AtEase;
-
 /**
  * Skin file for BlueLL
  *
@@ -9,18 +7,24 @@ use Wikimedia\AtEase\AtEase;
  * @ingroup Skins
  */
 class BlueLLTemplate extends BaseTemplate {
+	/**
+	 * https://phabricator.wikimedia.org/T278266
+	 */
+	private function getIcons() {
+		$footericons = $this->get('footericons');
+		foreach ( $footericons as $footerIconsKey => &$footerIconsBlock ) {
+			foreach ( $footerIconsBlock as $footerIconKey => $footerIcon ) {
+				if ( !isset( $footerIcon['src'] ) ) {
+					unset( $footerIconsBlock[$footerIconKey] );
+				}
+			}
+		}
+		return $footericons;
+	}
+
 	public function execute() {
 		$skin = $this->getSkin();
 		$user = $skin->getUser();
-		$version = $skin->getConfig()->get( 'Version' );
-		if ( method_exists( 'AtEase', 'suppressWarnings' ) ) {
-			// MW >= 1.33
-			AtEase::suppressWarnings();
-		} else {
-			Wikimedia\suppressWarnings();
-		}
-		$body = '';
-
 ?>
 <!-- START BLUELL TEMPLATE -->
 		<header id="navwrapper">
@@ -104,11 +108,6 @@ class BlueLLTemplate extends BaseTemplate {
 							<label id="actions-button" for="actions-input" class="dropdown-label"><?php echo wfMessage( 'actions' )->text() ?></label>
 							<ul id="actions" class="dropdown-content">
 								<?php foreach( $this->data['content_actions'] as $key => $item ) { if ( $key === 'edit' || $key === 'viewsource' ) { continue; } echo preg_replace(array('/\sprimary="1"/','/\scontext="[a-z]+"/','/\srel="archives"/'),'',$this->makeListItem($key, $item)); } ?>
-								<?php
-									if ( version_compare( $version, '1.35', '<' ) ) {
-										wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this, true ) );
-									}
-								?>
 
 							</ul>
 						</div>
@@ -135,11 +134,6 @@ class BlueLLTemplate extends BaseTemplate {
 									<a href="#"><?php echo wfMessage( 'actions' )->text() ?></a>
 									<ul>
 										<?php foreach( $this->data['content_actions'] as $key => $item ) { $item[ 'id' ] = "m" . $item[ 'id' ]; echo preg_replace(array('/\sprimary="1"/','/\scontext="[a-z]+"/','/\srel="archives"/'),'',$this->makeListItem($key, $item)); } ?>
-										<?php
-											if ( version_compare( $version, '1.35', '<' ) ) {
-												wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this, true ) );
-											}
-										?>
 									</ul>
 								</li>
 							</ul>
@@ -209,13 +203,14 @@ class BlueLLTemplate extends BaseTemplate {
 					<input id="toolbox-input" type="checkbox" role="button" aria-labelledby="toolbox-button" autocomplete="off" class="dropdown-input mobile-menu-input">
 					<label id="toolbox-button" for="toolbox-input" class="dropdown-label mobile-menu-label"><?php echo wfMessage( 'toolbox' )->text() ?></label>
 					<ul id="toolbox" class="dropdown-content mobile-menu-content">
-						<?php foreach ( $this->getToolbox() as $key => $item ) { echo $this->makeListItem($key, $item); } ?>
+						<!-- https://phabricator.wikimedia.org/T279390 -->
+						<?php foreach ( $this->data['sidebar']['TOOLBOX'] as $key => $item ) { echo $this->makeListItem($key, $item); } ?>
 						<li id="n-recentchanges"><?php echo Linker::specialLink('Recentchanges') ?></li>
 					</ul>
 					<label id="toolbox-mask" for="toolbox-input" class="mobile-menu-mask"></label>
 				</li>
 
-				<?php foreach ( $this->getFooterIcons( "icononly" ) as $blockName => $footerIcons ) { ?>
+				<?php foreach ( $this->getIcons() as $blockName => $footerIcons ) { ?>
 					<li class="<?php echo $blockName ?>">
 						<?php foreach ( $footerIcons as $icon ) { ?>
 							<?php echo $this->getSkin()->makeFooterIcon( $icon, "withImage" ); ?>
@@ -225,12 +220,6 @@ class BlueLLTemplate extends BaseTemplate {
 			</ul>
 		</footer>
 <?php
-		if ( method_exists( 'AtEase', 'suppressWarnings' ) ) {
-			// MW >= 1.33
-			AtEase::restoreWarnings();
-		} else {
-			Wikimedia\restoreWarnings();
-		}
 	}
 }
 ?>
