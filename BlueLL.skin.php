@@ -86,7 +86,7 @@ class BlueLLTemplate extends BaseTemplate {
 
 					<div id="top-bar-bottom-menu">
 						<?php foreach ( $this->getSidebar() as $boxName => $box ) { if ( $box['header'] != wfMessage( 'toolbox' )->text() && $box['id'] != 'p-lang'  ) { ?>
-							<ul id="<?php echo Sanitizer::escapeIdForAttribute( $box['id'] ) ?>"<?php echo Linker::tooltip( $box['id'] ) ?>>
+							<ul id="<?php echo htmlspecialchars( Sanitizer::escapeIdForAttribute( $box['id'] ), ENT_QUOTES ) ?>"<?php echo Linker::tooltip( $box['id'] ) ?>>
 								<?php if ( is_array( $box['content'] ) ) { ?>
 								<?php foreach ( $box['content'] as $key => $item ) { echo $this->makeListItem( $key, $item ); } ?>
 								<?php } } ?>
