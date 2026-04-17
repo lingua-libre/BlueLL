@@ -24,6 +24,15 @@
 					],
 					"styles": [
 						"skins.bluell.styles"
+					],
+					"menus": [
+						"user-menu",
+						"notifications",
+						"user-interface-preferences",
+						"user-page",
+						"associated-pages",
+						"views",
+						"actions"
 					]
 				}
 			]

@@ -31,6 +31,16 @@ class BlueLLTemplate extends BaseTemplate {
 	public function execute() {
 		$skin = $this->getSkin();
 		$user = $skin->getUser();
+		$personalTools = array_merge(
+			$this->data['content_navigation']['user-page'] ?? [],
+			$this->data['content_navigation']['user-menu'] ?? [],
+			$this->data['content_navigation']['notifications'] ?? [],
+			$this->data['content_navigation']['user-interface-preferences'] ?? []
+		);
+		$actions = array_merge(
+			$this->data['content_navigation']['actions'] ?? [],
+			$this->data['content_navigation']['associated-pages'] ?? [],
+		);
 		ob_start();
 
 ?>
@@ -63,7 +73,7 @@ class BlueLLTemplate extends BaseTemplate {
 
 						<!-- Language selector -->
 						<li>
-							<?php foreach ( $this->getPersonalTools() as $key => $item ) { if ($key == "uls") { echo $this->makeListItem($key, $item); break; } } ?>
+							<?php foreach ( $personalTools as $key => $item ) { if ($key == "uls") { echo $this->makeListItem($key, $item); break; } } ?>
 						</li>
 
 						<!-- Record call-to-action -->
@@ -85,7 +95,12 @@ class BlueLLTemplate extends BaseTemplate {
 							<input id="personal-input" type="checkbox" role="button" aria-labelledby="personal-button" autocomplete="off" class="dropdown-input mobile-menu-input">
 							<label id="personal-button" for="personal-input" class="dropdown-label mobile-menu-label"></label>
 							<ul id="personal" class="dropdown-content mobile-menu-content">
-								<?php foreach ( $this->getPersonalTools() as $key => $item ) { if ($key != "uls") { echo $this->makeListItem($key, $item); } } ?>
+								<?php
+								foreach ( $personalTools as $key => $item ) {
+									if ( $key != 'uls' ) {
+										echo $this->makeListItem($key, $item);
+									}
+								} ?>
 							</ul>
 							<label id="personal-mask" for="personal-input" class="mobile-menu-mask"></label>
 						</li>
@@ -93,7 +108,8 @@ class BlueLLTemplate extends BaseTemplate {
 					</ul>
 
 					<div id="top-bar-bottom-menu">
-						<?php foreach ( $this->getSidebar() as $boxName => $box ) { if ( $box['header'] != wfMessage( 'toolbox' )->text() && $box['id'] != 'p-lang'  ) { ?>
+						<?php foreach ( $this->getSidebar() as $boxName => $box ) {
+							if ( $box['header'] != wfMessage( 'toolbox' )->text() && $box['id'] != 'p-lang'  ) { ?>
 							<ul id="<?php echo htmlspecialchars( Sanitizer::escapeIdForAttribute( $box['id'] ), ENT_QUOTES ) ?>"<?php echo Linker::tooltip( $box['id'] ) ?>>
 								<?php if ( is_array( $box['content'] ) ) { ?>
 								<?php foreach ( $box['content'] as $key => $item ) { echo $this->makeListItem( $key, $item ); } ?>
@@ -102,12 +118,12 @@ class BlueLLTemplate extends BaseTemplate {
 						<?php } ?>
 
 						<!-- Edit button -->
-						<?php if ( isset( $this->data['content_actions']['edit'] ) ) { ?>
-							<?php echo preg_replace(array('/\sprimary="1"/','/\scontext="[a-z]+"/','/\srel="archives"/'),'',$this->makeListItem('edit', $this->data['content_actions']['edit'], ['tag' => 'span'])); ?>
+						<?php if ( isset( $actions['edit'] ) ) { ?>
+							<?php echo preg_replace(array('/\sprimary="1"/','/\scontext="[a-z]+"/','/\srel="archives"/'),'',$this->makeListItem('edit', $actions['edit'], ['tag' => 'span'])); ?>
 						<?php } ?>
-						<?php if ( isset( $this->data['content_actions']['viewsource'] ) ) { ?>
-							<?php $this->data['content_actions']['viewsource']['text'] = wfMessage( 'edit' ); ?>
-							<?php echo preg_replace(array('/\sprimary="1"/','/\scontext="[a-z]+"/','/\srel="archives"/'),'',$this->makeListItem('edit', $this->data['content_actions']['viewsource'], ['tag' => 'span'])); ?>
+						<?php if ( isset( $actions['viewsource'] ) ) { ?>
+							<?php $actions['viewsource']['text'] = wfMessage( 'edit' ); ?>
+							<?php echo preg_replace(array('/\sprimary="1"/','/\scontext="[a-z]+"/','/\srel="archives"/'),'',$this->makeListItem('edit', $actions['viewsource'], ['tag' => 'span'])); ?>
 						<?php } ?>
 
 						<!-- Action menu -->
@@ -115,7 +131,7 @@ class BlueLLTemplate extends BaseTemplate {
 							<input id="actions-input" type="checkbox" role="button" aria-labelledby="actions-button" autocomplete="off" class="dropdown-input">
 							<label id="actions-button" for="actions-input" class="dropdown-label"><?php echo wfMessage( 'actions' )->text() ?></label>
 							<ul id="actions" class="dropdown-content">
-								<?php foreach( $this->data['content_actions'] as $key => $item ) { if ( $key === 'edit' || $key === 'viewsource' ) { continue; } echo preg_replace(array('/\sprimary="1"/','/\scontext="[a-z]+"/','/\srel="archives"/'),'',$this->makeListItem($key, $item)); } ?>
+								<?php foreach( $actions as $key => $item ) { if ( $key === 'edit' || $key === 'viewsource' ) { continue; } echo preg_replace(array('/\sprimary="1"/','/\scontext="[a-z]+"/','/\srel="archives"/'),'',$this->makeListItem($key, $item)); } ?>
 
 							</ul>
 						</div>
@@ -141,7 +157,7 @@ class BlueLLTemplate extends BaseTemplate {
 								<li id="m-action-menu">
 									<a href="#"><?php echo wfMessage( 'actions' )->text() ?></a>
 									<ul>
-										<?php foreach( $this->data['content_actions'] as $key => $item ) { $item[ 'id' ] = "m" . $item[ 'id' ]; echo preg_replace(array('/\sprimary="1"/','/\scontext="[a-z]+"/','/\srel="archives"/'),'',$this->makeListItem($key, $item)); } ?>
+										<?php foreach( $actions as $key => $item ) { $item[ 'id' ] = "m" . $item[ 'id' ]; echo preg_replace(array('/\sprimary="1"/','/\scontext="[a-z]+"/','/\srel="archives"/'),'',$this->makeListItem($key, $item)); } ?>
 									</ul>
 								</li>
 							</ul>

@@ -186,7 +186,7 @@
 
 /* arrows indicator on some buttons */
 #actions-button::after,
-#pt-uls a.uls-trigger::after,
+#ca-uls a.uls-trigger::after,
 #toolbox-button::after {
 	display: inline;
 	height: 10px;
@@ -199,7 +199,7 @@
 	background-size: 10px;
 }
 #actions-button::after,
-#pt-uls a.uls-trigger::after {
+#ca-uls a.uls-trigger::after {
 	background-image: url(icons/arrow-down.svg);
 }
 #toolbox-button::after {
@@ -256,10 +256,10 @@
 }
 
 /* Universal Language Translator */
-#pt-uls {
+#ca-uls {
 	position: relative;
 }
-#pt-uls a.uls-trigger {
+#ca-uls a.uls-trigger {
 	display: block;
 	height: 20px;
 	padding: 6px 10px 6px 36px;
@@ -281,11 +281,11 @@
 	line-height: 18px;
 }
 
-#pt-uls a.uls-trigger:hover {
+#ca-uls a.uls-trigger:hover {
 	background-color: white;
 	color: #444444;
 }
-#pt-uls a.uls-trigger:active {
+#ca-uls a.uls-trigger:active {
 	background-color: #c8ccd1;
 	color: #000;
 	border-color: #72777d;
@@ -363,7 +363,7 @@
 .drop-icon {
 	display: inline;
 }
-#pt-uls .drop-icon {
+#ca-uls .drop-icon {
 	display: none;
 }
 
@@ -520,11 +520,11 @@
 	#hamburger-menu {
 		display: block;
 	}
-	#pt-uls a.uls-trigger {
+	#ca-uls a.uls-trigger {
 		font-size: 0;
 		padding: 6px 0px 6px 16px;
 	}
-	#pt-uls a.uls-trigger::after {
+	#ca-uls a.uls-trigger::after {
 		background-size: 0px;
 	}
 }
@@ -534,7 +534,7 @@
 		padding-right: 14px;
 		font-size: 0px;
 	}
-	#pt-uls {
+	#ca-uls {
 	    display: none;
 	}
 }
