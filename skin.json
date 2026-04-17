@@ -9,7 +9,7 @@
 	"license-name": "BSD-2-Clause",
 	"type": "skin",
 	"requires": {
-		"MediaWiki": ">= 1.41.0"
+		"MediaWiki": ">= 1.46.0"
 	},
 	"ValidSkinNames": {
 		"bluell": {
@@ -19,7 +19,6 @@
 					"name": "bluell",
 					"responsive": true,
 					"template": "BlueLLTemplate",
-					"bodyOnly": true,
 					"scripts": [
 						"skins.bluell.js"
 					],
@@ -41,7 +40,6 @@
 	},
 	"ResourceModules": {
 		"skins.bluell.styles": {
-			"position": "top",
 			"styles": [
 				"assets/stylesheets/normalize.min.css",
 				"assets/stylesheets/font-awesome.min.css",
@@ -55,7 +53,6 @@
 			]
 		},
 		"skins.bluell.js": {
-			"position": "bottom",
 			"scripts": [
 				"assets/scripts/bluell.js"
 			]

@@ -6,6 +6,12 @@
  * @file
  * @ingroup Skins
  */
+
+use MediaWiki\Html\Html;
+use MediaWiki\Linker\Linker;
+use MediaWiki\Parser\Sanitizer;
+use MediaWiki\Title\Title;
+
 class BlueLLTemplate extends BaseTemplate {
 	/**
 	 * https://phabricator.wikimedia.org/T278266
@@ -25,6 +31,8 @@ class BlueLLTemplate extends BaseTemplate {
 	public function execute() {
 		$skin = $this->getSkin();
 		$user = $skin->getUser();
+		ob_start();
+
 ?>
 <!-- START BLUELL TEMPLATE -->
 		<header id="navwrapper">
@@ -220,6 +228,9 @@ class BlueLLTemplate extends BaseTemplate {
 			</ul>
 		</footer>
 <?php
+		$html = ob_get_contents();
+		ob_end_clean();
+		echo $html;
 	}
 }
 ?>
